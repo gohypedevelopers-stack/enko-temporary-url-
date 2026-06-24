@@ -6,6 +6,15 @@ export const navItems = [
   { label: 'CONTACT', href: '/contact' },
 ];
 
+export const whatsappUrl = 'https://wa.me/919876543210?text=Hello%20ENKO%2C%20I%20want%20to%20discuss%20EV%20charging%20hardware%20for%20my%20deployment.';
+
+export const publicStats = [
+  { label: 'Charging Stations', value: '450+' },
+  { label: 'Active Users', value: '140+' },
+  { label: 'Partner Programs', value: '10+' },
+  { label: 'Director Experience', value: '50+ Years' },
+];
+
 export const metrics = [
   {
     label: 'Below PM E-DRIVE government benchmark pricing at full margin.',

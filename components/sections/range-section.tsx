@@ -15,10 +15,10 @@ function RangeCard({ card, index }: { card: typeof rangeCards[0], index: number 
           <img src={card.image} alt={card.name} className="max-w-full max-h-full object-contain p-4 mix-blend-screen opacity-90" />
         </div>
         <h3 className="mt-6 text-2xl font-black uppercase text-warm">{card.name}</h3>
-        
+
         <div className={`overflow-hidden transition-all duration-300 ease-in-out ${showSpecs ? 'max-h-[800px] opacity-100 mt-3' : 'max-h-0 opacity-0'}`}>
           <p className="text-sm leading-6 text-warm/65">{card.copy}</p>
-          
+
           <div className="space-y-5 pt-6 mt-6 border-t border-warm/10">
             {card.specs.map(([key, value]) => (
               <div key={key}>
@@ -32,8 +32,8 @@ function RangeCard({ card, index }: { card: typeof rangeCards[0], index: number 
           </div>
         </div>
       </div>
-      
-      <button 
+
+      <button
         onClick={() => setShowSpecs(!showSpecs)}
         className="mt-8 w-full py-3.5 bg-forge border border-warm/10 shadow-sm text-xs font-black tracking-[0.16em] uppercase transition-all hover:bg-charge hover:text-forge hover:border-charge hover:shadow-md text-warm"
       >
@@ -46,25 +46,25 @@ function RangeCard({ card, index }: { card: typeof rangeCards[0], index: number 
 export function RangeSection() {
   return (
     <section id="range" className="grid-paper border-b border-warm/10 bg-steel pt-24 pb-16">
-      
+
       {/* Massive Header / Fast Charging Style */}
       <div className="w-full text-center relative mb-32 px-4">
-         <h2 className="text-[12vw] font-black uppercase text-warm leading-[0.8] tracking-tighter relative z-10 opacity-5">
-           ARCHITECTURE
-         </h2>
-         <h2 className="text-5xl md:text-7xl font-black uppercase text-warm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-full">
-           FAST CHARGING
-         </h2>
-         
-         {/* Pill Shaped Image */}
-         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[35vw] h-[18vw] min-w-[320px] min-h-[160px] rounded-full overflow-hidden shadow-2xl border-[10px] border-steel z-30">
-            <img 
-              src="https://images.unsplash.com/photo-1593941707882-a5bba14938cb?auto=format&fit=crop&q=80&w=1200" 
-              className="w-full h-full object-cover filter contrast-125"
-            />
-            {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-charge/20 to-transparent mix-blend-overlay" />
-         </div>
+        <h2 className="text-[12vw] font-black uppercase text-warm leading-[0.8] tracking-tighter relative z-10 opacity-5">
+          ARCHITECTURE
+        </h2>
+        <h2 className="text-5xl md:text-7xl font-black uppercase text-warm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-full">
+          FAST CHARGING
+        </h2>
+
+        {/* Pill Shaped Image */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[35vw] h-[18vw] min-w-[320px] min-h-[160px] rounded-full overflow-hidden shadow-2xl border-[10px] border-steel z-30">
+          <img
+            src="https://images.unsplash.com/photo-1593941707882-a5bba14938cb?auto=format&fit=crop&q=80&w=1200"
+            className="w-full h-full object-cover filter contrast-125"
+          />
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-charge/20 to-transparent mix-blend-overlay" />
+        </div>
       </div>
 
       <div className="container-shell">
@@ -77,13 +77,13 @@ export function RangeSection() {
             Engineered for diverse industrial environments. Unified by robust build quality and intelligent software integration.
           </p>
         </div>
-        
+
         <div className="mt-12 grid gap-8 lg:grid-cols-3 items-start relative z-40">
           {rangeCards.map((card, index) => (
             <RangeCard key={card.name} card={card} index={index} />
           ))}
         </div>
-        
+
         <div className="mt-16 flex justify-center">
           <a href="/products" className="industrial-button bg-charge text-forge w-full sm:w-auto text-center hover:bg-warm">
             Show All Products
