@@ -1,4 +1,5 @@
 import { PartnersSection } from '@/components/sections/partners-section';
+import { FastChargingSolutionsSection } from '@/components/sections/fast-charging-solutions-section';
 import { PageHero } from '@/components/page-hero';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
@@ -12,6 +13,7 @@ export default function PartnersPage() {
         description="Built for charge point operators, OEMs, and fleet logistics providers."
         kicker="Network Integration"
       />
+      <FastChargingSolutionsSection />
       <PartnersSection />
       <SiteFooter />
     </main>

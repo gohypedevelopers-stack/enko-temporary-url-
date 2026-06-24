@@ -24,7 +24,7 @@ export function FaqSection() {
         
         {/* FAQ Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 mb-24">
-          {faqs.slice(0, 6).map((faq, index) => (
+          {faqs.map((faq, index) => (
             <div key={index} className="flex items-start">
               <div className="w-1.5 h-1.5 rounded-full bg-charge mt-2 mr-4 flex-shrink-0" />
               <div>

@@ -1,3 +1,5 @@
+import { partnerProof, partnerSegments } from '@/lib/site-data';
+
 export function PartnersSection() {
   return (
     <section id="partners" className="border-b border-warm/10 bg-forge">
@@ -10,32 +12,56 @@ export function PartnersSection() {
         </div>
         
         <div className="mt-6 grid gap-6 grid-cols-1">
-          {/* Segment 1 */}
-          <article className="border border-warm/15 p-8 lg:p-10 bg-steel transition-colors hover:border-charge group">
-            <p className="label-kicker text-warm/40 group-hover:text-charge transition-colors">Segment 01</p>
-            <h2 className="mt-4 text-2xl lg:text-3xl font-black uppercase text-charge">1. Charge Point Operators (CPOs)</h2>
-            <p className="mt-4 text-base leading-relaxed text-warm/80">
-              Maximize your infrastructure rollouts. Purchase robust CCS2 chargers at <strong className="text-warm">31% to 36% below the PM E-DRIVE benchmark</strong> while keeping your profit margins intact. Secure reliable hardware assets built for high-throughput environments across urban centers and highway routes.
-            </p>
-          </article>
-          
-          {/* Segment 2 */}
-          <article className="border border-warm/15 p-8 lg:p-10 bg-steel transition-colors hover:border-charge group">
-            <p className="label-kicker text-warm/40 group-hover:text-charge transition-colors">Segment 02</p>
-            <h2 className="mt-4 text-2xl lg:text-3xl font-black uppercase text-charge">2. Original Equipment Manufacturers (OEMs)</h2>
-            <p className="mt-4 text-base leading-relaxed text-warm/80">
-              Focus on your vehicle rollouts and let us handle the power architecture. Leverage our established domestic assembly lines to secure a steady supply of market-ready CCS2 charging hardware built to match high automotive standards.
-            </p>
-          </article>
-          
-          {/* Segment 3 */}
-          <article className="border border-warm/15 p-8 lg:p-10 bg-steel transition-colors hover:border-charge group">
-            <p className="label-kicker text-warm/40 group-hover:text-charge transition-colors">Segment 03</p>
-            <h2 className="mt-4 text-2xl lg:text-3xl font-black uppercase text-charge">3. Fleet & Depot Operators</h2>
-            <p className="mt-4 text-base leading-relaxed text-warm/80">
-              Reduce vehicle turnaround times. Deploy multi-unit DC fast-charging configurations (30kW to 240kW+) tailored for high-utilization logistics fleets, delivery vans, and heavy transport vehicles.
-            </p>
-          </article>
+          {partnerSegments.map((segment, index) => (
+            <article
+              key={segment.title}
+              className="border border-warm/15 p-8 lg:p-10 bg-steel transition-colors hover:border-charge group"
+            >
+              <p className="label-kicker text-warm/40 group-hover:text-charge transition-colors">
+                Segment {String(index + 1).padStart(2, '0')}
+              </p>
+              <h2 className="mt-4 text-2xl lg:text-3xl font-black uppercase text-charge">
+                {index + 1}. {segment.title}
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-warm/80">
+                {segment.copy}
+              </p>
+              <a
+                href="/contact"
+                className="industrial-button mt-8 w-full border-charge bg-charge text-forge hover:bg-warm hover:text-forge sm:w-auto"
+              >
+                {segment.cta}
+              </a>
+            </article>
+          ))}
+        </div>
+
+        <div className="mt-16 border-t border-warm/10 pt-12">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-3xl">
+              <p className="label-kicker text-charge">Partner Proof</p>
+              <h2 className="mt-4 text-3xl sm:text-4xl font-black uppercase text-warm leading-[1.05]">
+                Field-tested rollouts with real operator outcomes.
+              </h2>
+            </div>
+            <a
+              href="/contact"
+              className="industrial-button border-warm bg-warm text-forge hover:bg-charge hover:text-forge"
+            >
+              Share Your Deployment Specs
+            </a>
+          </div>
+
+          <div className="mt-8 grid gap-6 lg:grid-cols-2">
+            {partnerProof.map((proof) => (
+              <article key={proof.label} className="border border-warm/15 bg-steel p-6 lg:p-8">
+                <p className="label-kicker text-charge">{proof.label}</p>
+                <p className="mt-5 text-xl font-bold leading-snug text-warm">
+                  "{proof.quote}"
+                </p>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>

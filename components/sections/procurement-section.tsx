@@ -1,5 +1,5 @@
 const businessRoles = ['Charge Point Operator (CPO)', 'Vehicle OEM', 'Fleet Logistics Provider', 'Institutional Real Estate Buyer'];
-const regions = ['Tamil Nadu', 'Kerala', 'Andhra Pradesh', 'Karnataka', 'Telangana', 'Other Expansion State'];
+const regions = ['Tamil Nadu', 'Kerala', 'Andhra Pradesh', 'Karnataka (Operational)', 'Telangana', 'Other Expansion State'];
 const series = ['FLOW AC Series', 'STORM DC Series', 'BLAZE ULTRA Series'];
 
 export function ProcurementSection() {
@@ -82,6 +82,9 @@ export function ProcurementSection() {
                 CONNECT DIRECT VIA WHATSAPP
               </button>
             </div>
+            <p className="mt-4 text-sm text-warm/60">
+              You'll receive your engineered spec sheet within 24 business hours.
+            </p>
           </div>
         </form>
       </div>

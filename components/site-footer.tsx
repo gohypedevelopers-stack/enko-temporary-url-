@@ -36,8 +36,21 @@ export function SiteFooter() {
           </ul>
         </div>
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-[0.16em] text-warm/70">Secure Connect Line</h3>
-          <p className="mt-4 text-sm text-warm/55">WhatsApp Secure Channel Integration</p>
+          <h3 className="text-sm font-semibold uppercase tracking-[0.16em] text-warm/70">Contact & Support</h3>
+          <ul className="mt-4 space-y-3 text-sm text-warm/55">
+            <li>
+              <span className="block text-[10px] uppercase text-warm/40 mb-0.5">Phone / WhatsApp</span>
+              +91 98765 43210
+            </li>
+            <li>
+              <span className="block text-[10px] uppercase text-warm/40 mb-0.5">Email Support</span>
+              contact@enkoenergy.in
+            </li>
+            <li>
+              <span className="block text-[10px] uppercase text-warm/40 mb-0.5">Corporate HQ</span>
+              Bengaluru, Karnataka
+            </li>
+          </ul>
         </div>
       </div>
       

@@ -163,14 +163,28 @@ export const partnerSegments = [
   {
     title: 'Charge Point Operators',
     copy: 'Maximize your infrastructure rollouts. Purchase robust CCS2 chargers at 31% to 36% below the PM E-DRIVE benchmark while keeping your profit margins intact. Secure reliable hardware assets built for high-throughput environments across urban centers and highway routes.',
+    cta: "I'm a CPO - Get Pricing",
   },
   {
     title: 'Original Equipment Manufacturers',
     copy: 'Focus on your vehicle rollouts and let us handle the power architecture. Leverage our established domestic assembly lines to secure a steady supply of market-ready CCS2 charging hardware built to match high automotive standards.',
+    cta: "I'm an OEM - Talk to Integration Team",
   },
   {
     title: 'Fleet & Depot Operators',
     copy: 'Reduce vehicle turnaround times. Deploy multi-unit DC fast-charging configurations (30kW to 240kW+) tailored for high-utilization logistics fleets, delivery vans, and heavy transport vehicles.',
+    cta: "I'm a Fleet Operator - Calculate ROI",
+  },
+];
+
+export const partnerProof = [
+  {
+    label: 'Logistics Deployment',
+    quote: 'A Chennai logistics company deployed 12 units across its depot lanes and reduced vehicle turnaround by 40%.',
+  },
+  {
+    label: 'CPO Rollout',
+    quote: 'A South India charging operator standardized on ENKO DC fast chargers to expand uptime-backed highway coverage while protecting project margin.',
   },
 ];
 
@@ -181,8 +195,36 @@ export const faqs = [
   },
   {
     q: 'Do you supply hardware outside of South India?',
-    a: 'Right now, our core operational priority is South India-first, covering Tamil Nadu, Kerala, and Andhra Pradesh. However, our pan-India expansion is actively moving forward. If your project is located outside these states, please get in touch with our team to discuss your timeline and deployment options.',
+    a: 'Right now, our core operational priority is South India-first, covering Tamil Nadu, Kerala, Andhra Pradesh, and Karnataka (Operational HQ). However, our pan-India expansion is actively moving forward. If your project is located outside these states, please get in touch with our team to discuss your timeline and deployment options.',
   },
+  {
+    q: 'What is the standard warranty on ENKO hardware?',
+    a: 'We provide a standard 1-year comprehensive warranty on all AC and DC chargers, covering manufacturing defects and core components. Extended warranty options and Annual Maintenance Contracts (AMC) are also available at 4% of the unit price per year.',
+  },
+  {
+    q: 'What is your typical manufacturing lead time?',
+    a: 'For standard orders (up to 10 units), our typical lead time is 3 to 4 weeks from the date of order confirmation. For bulk B2B procurement and custom-configured batches, lead times are determined during the engineering spec review phase.',
+  },
+  {
+    q: 'Do you provide installation and commissioning support?',
+    a: 'Yes. We offer complete field service, installation supervision, and commissioning support across our operational regions (Tamil Nadu, Kerala, Andhra Pradesh, and Karnataka) to ensure your deployment is grid-ready and OCPP-integrated from day one.',
+  },
+  {
+    q: 'What are your standard payment terms?',
+    a: 'Standard terms for hardware procurement typically involve a 50% advance payment to initiate manufacturing, with the remaining 50% due prior to dispatch. Specific payment terms can be negotiated for large-scale institutional buyers and fleet operators.',
+  },
+  {
+    q: 'Is GST invoicing available for B2B purchases?',
+    a: 'Absolutely. We provide full GST invoicing for all B2B transactions. You can claim the applicable Input Tax Credit (ITC) for your EV charging infrastructure investments.',
+  },
+  {
+    q: 'Are your chargers BIS certified?',
+    a: 'Yes, all ENKO hardware is built to meet rigorous safety and performance standards and comes with the necessary BIS (Bureau of Indian Standards) certifications required for commercial deployment in India.',
+  },
+  {
+    q: 'Is custom firmware or white-label pricing included?',
+    a: 'We offer extensive white-labeling capabilities and custom firmware configurations. While standard OCPP 2.0.1 integration is included, deep custom firmware development or distinct physical branding (custom paint/decals) is priced separately based on the project scope.',
+  }
 ];
 
 export const aboutData = {
