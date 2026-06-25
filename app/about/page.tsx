@@ -99,25 +99,25 @@ export default function AboutPage() {
       <SiteHeader />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden border-b border-warm/10">
-        {/* Abstract Background */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-          <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-charge/20 rounded-full blur-[120px] opacity-50"></div>
+      <section className="relative min-h-[100dvh] flex items-center pt-24 overflow-hidden border-b border-warm/10">
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <div className="absolute inset-0 bg-forge"></div>
+          {/* subtle grid */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:48px_48px]"></div>
+          {/* glowing blob */}
+          <div className="absolute right-0 bottom-0 w-[60vw] h-[60vw] bg-charge/10 rounded-full blur-[150px] translate-x-1/4 translate-y-1/4"></div>
         </div>
 
-        <div className="container-shell relative z-10 text-center max-w-5xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-charge/30 bg-charge/5 text-charge text-xs font-bold uppercase tracking-widest mb-8">
-            <span className="w-2 h-2 rounded-full bg-charge animate-pulse"></span>
-            Building The Future
+        <div className="container-shell relative z-10 w-full">
+          <div className="max-w-4xl">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-warm mb-6 leading-[0.9]">
+              Powering the <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-charge to-charge/60">Transition</span>
+            </h1>
+            <p className="text-warm/60 text-lg md:text-xl max-w-2xl leading-relaxed">
+              We are ENKO, architects of the next-generation EV charging infrastructure. Designed for durability, built for the future.
+            </p>
           </div>
-          <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-black uppercase leading-[0.85] tracking-tight mb-8">
-            Crafting <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-warm via-warm to-charge/50">Excellence</span>
-          </h1>
-          <p className="text-warm/60 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-12">
-            At ENKO we are committed to revolutionizing the EV infrastructure industry. With a proven track record of delivering exceptional charging hubs, we combine state-of-the-art technology and skilled expertise to bring visions to life.
-          </p>
         </div>
       </section>
 
@@ -129,7 +129,7 @@ export default function AboutPage() {
 
           {/* Vertical Scroll Timeline Line */}
           <div className="absolute left-[39%] lg:left-[41.66%] -translate-x-[2rem] top-12 bottom-12 w-[2px] bg-warm/10 hidden lg:block rounded-full z-0">
-            <motion.div 
+            <motion.div
               className="absolute top-0 left-0 w-full bg-charge origin-top rounded-full"
               style={{ scaleY: scrollYProgress, bottom: 0, top: 0 }}
             />
@@ -144,19 +144,19 @@ export default function AboutPage() {
               <motion.div className="w-full h-full bg-charge" style={{ opacity: dot3Opacity }} />
             </div>
           </div>
-          
+
           {/* Mission */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start relative">
             <div className="hidden lg:block lg:col-span-5 relative">
-               <div className="sticky top-32 text-[15rem] font-black leading-none tracking-tighter -ml-12 relative">
-                 <div className="text-warm/5">01</div>
-                 <motion.div className="absolute inset-0 text-charge/20" style={{ opacity: dot1Opacity }}>01</motion.div>
-               </div>
+              <div className="sticky top-32 text-[15rem] font-black leading-none tracking-tighter -ml-12 relative">
+                <div className="text-warm/5">01</div>
+                <motion.div className="absolute inset-0 text-charge/20" style={{ opacity: dot1Opacity }}>01</motion.div>
+              </div>
             </div>
             <div className="lg:col-span-7 pt-8">
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-12 h-12 rounded-full bg-charge/10 flex items-center justify-center text-charge">
-                   <Target className="w-6 h-6" />
+                  <Target className="w-6 h-6" />
                 </div>
                 <h2 className="text-4xl lg:text-5xl font-black uppercase tracking-tight text-warm">Our Mission</h2>
               </div>
@@ -182,15 +182,15 @@ export default function AboutPage() {
           {/* Vision */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start relative">
             <div className="hidden lg:block lg:col-span-5 relative">
-               <div className="sticky top-32 text-[15rem] font-black leading-none tracking-tighter -ml-12 relative">
-                 <div className="text-warm/5">02</div>
-                 <motion.div className="absolute inset-0 text-charge/20" style={{ opacity: dot2Opacity }}>02</motion.div>
-               </div>
+              <div className="sticky top-32 text-[15rem] font-black leading-none tracking-tighter -ml-12 relative">
+                <div className="text-warm/5">02</div>
+                <motion.div className="absolute inset-0 text-charge/20" style={{ opacity: dot2Opacity }}>02</motion.div>
+              </div>
             </div>
             <div className="lg:col-span-7 pt-8">
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-12 h-12 rounded-full bg-charge/10 flex items-center justify-center text-charge">
-                   <Eye className="w-6 h-6" />
+                  <Eye className="w-6 h-6" />
                 </div>
                 <h2 className="text-4xl lg:text-5xl font-black uppercase tracking-tight text-warm">Our Vision</h2>
               </div>
@@ -216,20 +216,20 @@ export default function AboutPage() {
           {/* History */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start relative">
             <div className="hidden lg:block lg:col-span-5 relative">
-               <div className="sticky top-32 text-[15rem] font-black leading-none tracking-tighter -ml-12 relative">
-                 <div className="text-warm/5">03</div>
-                 <motion.div className="absolute inset-0 text-charge/20" style={{ opacity: dot3Opacity }}>03</motion.div>
-               </div>
+              <div className="sticky top-32 text-[15rem] font-black leading-none tracking-tighter -ml-12 relative">
+                <div className="text-warm/5">03</div>
+                <motion.div className="absolute inset-0 text-charge/20" style={{ opacity: dot3Opacity }}>03</motion.div>
+              </div>
             </div>
             <div className="lg:col-span-7 pt-8">
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-12 h-12 rounded-full bg-charge/10 flex items-center justify-center text-charge">
-                   <History className="w-6 h-6" />
+                  <History className="w-6 h-6" />
                 </div>
-                <h2 className="text-4xl lg:text-5xl font-black uppercase tracking-tight text-warm">Our History</h2>
+                <h2 className="text-4xl lg:text-5xl font-black uppercase tracking-tight text-warm">Our Commitment</h2>
               </div>
               <p className="text-warm/60 text-lg leading-relaxed mb-10">
-                Founded on a commitment to quality and innovation, ENKO began as a small team with a big vision. Over the years, we have grown into a trusted name in the EV infrastructure industry, delivering exceptional projects that stand the test of time. Our journey is marked by milestones of success, driven by passion and a dedication to excellence.
+                At ENKO we are committed to revolutionizing the EV infrastructure industry. With a proven track record of delivering exceptional charging hubs, we combine state-of-the-art technology and skilled expertise to bring visions to life.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {[

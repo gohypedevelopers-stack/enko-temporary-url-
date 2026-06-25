@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 import { motion, AnimatePresence } from 'framer-motion';
+import { TestimonialSlider } from '@/components/ui/testimonial-slider-1';
 
 const flowProducts = [
   {
@@ -223,14 +224,25 @@ export default function ProductsPage() {
       <SiteHeader />
 
       {/* Hero Section */}
-      <section className="relative w-full h-[80vh] min-h-[600px] max-h-[900px] flex items-center justify-center overflow-hidden border-b border-warm/10">
-        {/* Background Layer */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src="https://i.postimg.cc/bJxqpBdz/Chat-GPT-Image-Jun-22-2026-12-17-14-PM.png"
-            alt="EV Charging Background"
-            className="absolute inset-0 w-full h-full object-cover object-center"
-          />
+      <section className="relative min-h-[100dvh] flex items-center pt-24 overflow-hidden border-b border-warm/10">
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <div className="absolute inset-0 bg-forge"></div>
+          {/* subtle grid */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:48px_48px]"></div>
+          {/* glowing blob */}
+          <div className="absolute right-0 bottom-0 w-[60vw] h-[60vw] bg-charge/10 rounded-full blur-[150px] translate-x-1/4 translate-y-1/4"></div>
+        </div>
+
+        <div className="container-shell relative z-10 w-full">
+          <div className="max-w-4xl">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-warm mb-6 leading-[0.9]">
+              Hardware for <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-charge to-charge/60">The Future</span>
+            </h1>
+            <p className="text-warm/60 text-lg md:text-xl max-w-2xl leading-relaxed">
+              Full-spectrum CCS2 charging assets. From entry-level commercial AC plug-ins to high-power highway DC ultra-chargers.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -238,202 +250,71 @@ export default function ProductsPage() {
 
 
 
-      {/* Key Benefits Section */}
-      <section className="pt-32 pb-8 md:pb-12 relative overflow-hidden border-b border-warm/10" style={{ background: 'radial-gradient(ellipse at 50% 40%, #2e2e2e 0%, #191919 55%, #0a0a0a 100%)' }}>
-        <div className="container-shell text-center mb-16 relative z-10">
-          <h2 className="text-4xl lg:text-5xl font-black uppercase mb-4 text-warm">Key Benefits</h2>
-          <p className="text-warm/60 max-w-2xl mx-auto text-sm">
-            Unlock the core advantages of our EV charger — designed for speed, intelligence, and compatibility with every ride.
-          </p>
-        </div>
+      {/* Product Showcase Section */}
+      <section className="h-[100dvh] flex flex-col relative overflow-hidden border-b border-warm/10" style={{ background: 'radial-gradient(ellipse at 50% 40%, #2e2e2e 0%, #191919 55%, #0a0a0a 100%)' }}>
 
-        <div className="container-shell relative max-w-5xl mx-auto h-[600px] md:h-[800px] z-10">
-          <div className="absolute inset-0 flex items-center justify-center">
-            {/* Charger Image */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={`carousel-image-${currentCarouselIndex}`}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-                className="relative w-[400px] md:w-[550px] h-[600px] md:h-[800px] z-20 drop-shadow-[0_0_50px_rgba(232,160,32,0.15)]"
-              >
-                <div className="absolute top-0 md:top-[-2%] left-0 w-full text-center z-30 pointer-events-none">
-                  <h3 className="text-lg md:text-xl font-black uppercase tracking-widest text-warm">
-                    {carouselProducts[currentCarouselIndex].seriesPrefix} <span className="text-charge">{carouselProducts[currentCarouselIndex].seriesSuffix}</span>
-                  </h3>
-                  <div className="h-px bg-warm/15 w-64 mx-auto mt-2 mb-3" />
-                  <h4 className="text-md md:text-lg font-bold uppercase tracking-wider text-warm">
-                    {currentCarouselIndex + 1}. {carouselProducts[currentCarouselIndex].name}
-                  </h4>
-                </div>
-                <Image
-                  src={carouselProducts[currentCarouselIndex].image}
-                  alt={carouselProducts[currentCarouselIndex].name}
-                  fill
-                  className="object-contain scale-[1.2] md:scale-[1.3] origin-center -translate-y-4 md:-translate-y-8"
-                />
-              </motion.div>
-            </AnimatePresence>
-
-            {/* Connection Lines & Labels (Desktop) */}
-            <div className="hidden md:block absolute inset-0 z-10">
-              {/* Left side items */}
-              <div className="absolute top-[36%] left-0 text-right w-64 h-8">
-                <AnimatePresence mode="wait">
-                  <motion.h4
-                    key={`spec0-${currentCarouselIndex}`}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -10 }}
-                    transition={{ duration: 0.4 }}
-                    className="text-sm font-bold uppercase tracking-widest mb-1 text-warm relative z-10 whitespace-nowrap"
-                  >
-                    {carouselProducts[currentCarouselIndex].specs[0]}
-                  </motion.h4>
-                </AnimatePresence>
-                <motion.div
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  transition={{ duration: 0.6, delay: 1.1, ease: "easeInOut" }}
-                  viewport={{ once: true }}
-                  className="h-[1px] w-20 bg-gradient-to-r from-transparent to-charge/50 absolute right-[-80px] top-3 origin-right"
-                />
-                <motion.div
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.3, delay: 0.8 }}
-                  viewport={{ once: true }}
-                  className="w-2 h-2 rounded-full bg-charge absolute right-[-84px] top-[8.5px] shadow-[0_0_10px_#e8a020] z-20"
-                />
-              </div>
-
-              <div className="absolute top-[61%] left-0 text-right w-64 h-8">
-                <AnimatePresence mode="wait">
-                  <motion.h4
-                    key={`spec1-${currentCarouselIndex}`}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -10 }}
-                    transition={{ duration: 0.4 }}
-                    className="text-sm font-bold uppercase tracking-widest mb-1 text-warm relative z-10 whitespace-nowrap"
-                  >
-                    {carouselProducts[currentCarouselIndex].specs[1]}
-                  </motion.h4>
-                </AnimatePresence>
-                <motion.div
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  transition={{ duration: 0.6, delay: 1.1, ease: "easeInOut" }}
-                  viewport={{ once: true }}
-                  className="h-[1px] w-12 bg-gradient-to-r from-transparent to-charge/50 absolute right-[-48px] top-3 origin-right"
-                />
-                <motion.div
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.3, delay: 0.8 }}
-                  viewport={{ once: true }}
-                  className="w-2 h-2 rounded-full bg-charge absolute right-[-52px] top-[8.5px] shadow-[0_0_10px_#e8a020] z-20"
-                />
-              </div>
-
-
-
-              {/* Right side items */}
-              <div className="absolute top-[39%] right-0 text-left w-64 h-8">
-                <AnimatePresence mode="wait">
-                  <motion.h4
-                    key={`spec3-${currentCarouselIndex}`}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 10 }}
-                    transition={{ duration: 0.4 }}
-                    className="text-sm font-bold uppercase tracking-widest mb-1 text-warm relative z-10 whitespace-nowrap"
-                  >
-                    {carouselProducts[currentCarouselIndex].specs[3]}
-                  </motion.h4>
-                </AnimatePresence>
-                <motion.div
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  transition={{ duration: 0.6, delay: 1.1, ease: "easeInOut" }}
-                  viewport={{ once: true }}
-                  className="h-[1px] w-20 bg-gradient-to-l from-transparent to-charge/50 absolute left-[-80px] top-3 origin-left"
-                />
-                <motion.div
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.3, delay: 0.8 }}
-                  viewport={{ once: true }}
-                  className="w-2 h-2 rounded-full bg-charge absolute left-[-84px] top-[8.5px] shadow-[0_0_10px_#e8a020] z-20"
-                />
-              </div>
-
-              <div className="absolute top-[64%] right-0 text-left w-64 h-8">
-                <AnimatePresence mode="wait">
-                  <motion.h4
-                    key={`spec4-${currentCarouselIndex}`}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 10 }}
-                    transition={{ duration: 0.4 }}
-                    className="text-sm font-bold uppercase tracking-widest mb-1 text-warm relative z-10 whitespace-nowrap"
-                  >
-                    {carouselProducts[currentCarouselIndex].specs[4]}
-                  </motion.h4>
-                </AnimatePresence>
-                <motion.div
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  transition={{ duration: 0.6, delay: 1.1, ease: "easeInOut" }}
-                  viewport={{ once: true }}
-                  className="h-[1px] w-12 bg-gradient-to-l from-transparent to-charge/50 absolute left-[-48px] top-3 origin-left"
-                />
-                <motion.div
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.3, delay: 0.8 }}
-                  viewport={{ once: true }}
-                  className="w-2 h-2 rounded-full bg-charge absolute left-[-52px] top-[8.5px] shadow-[0_0_10px_#e8a020] z-20"
-                />
-              </div>
-
-
-            </div>
-
-            {/* Mobile Labels */}
-            <div className="md:hidden absolute inset-x-0 bottom-0 top-[20%] flex flex-col justify-between items-center z-30 pointer-events-none">
-              <div className="bg-steel/80 backdrop-blur-sm border border-warm/10 px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest w-max mb-auto mt-4 text-warm">{carouselProducts[currentCarouselIndex].specs[0]}</div>
-              <div className="w-full flex justify-between px-4 mt-12">
-                <div className="bg-steel/80 backdrop-blur-sm border border-warm/10 px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest text-warm">{carouselProducts[currentCarouselIndex].specs[1]}</div>
-                <div className="bg-steel/80 backdrop-blur-sm border border-warm/10 px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest text-warm">{carouselProducts[currentCarouselIndex].specs[2]}</div>
-              </div>
-              <div className="bg-steel/80 backdrop-blur-sm border border-warm/10 px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest w-max mt-auto mb-10 text-warm">{carouselProducts[currentCarouselIndex].specs[3]}</div>
-            </div>
-          </div>
-          
-          {/* Thumbnails Navigation */}
-          <div className="absolute bottom-0 md:bottom-6 left-0 right-0 flex justify-center items-end gap-3 z-30 px-4 pt-10 pb-8 overflow-x-auto overflow-y-hidden hide-scrollbar">
-            {carouselProducts.map((product, idx) => (
-              <button
-                key={idx}
-                onClick={() => setCurrentCarouselIndex(idx)}
-                className={`relative w-12 h-16 md:w-16 md:h-24 transition-all duration-500 flex-shrink-0 group ${
-                  currentCarouselIndex === idx 
-                    ? 'scale-[1.25] drop-shadow-[0_0_15px_rgba(232,160,32,0.5)] z-10 opacity-100' 
-                    : 'opacity-40 hover:opacity-100 grayscale hover:grayscale-0 hover:scale-110'
-                }`}
-              >
-                <Image 
-                  src={product.image} 
-                  alt={product.name} 
-                  fill 
-                  className="object-contain p-2" 
-                />
-              </button>
-            ))}
-          </div>
+        <div className="container-shell h-full relative z-10 flex flex-col">
+          <TestimonialSlider
+            reviews={[
+              {
+                id: 1,
+                name: "ENKO Flow 7",
+                affiliation: "AC SERIES // SYSTEM_NODE_01",
+                quote: "Workplace parking layouts, commercial retail hubs, and residential apartments. 7.4kW output. OCPP 2.0.1 compliant. Wall-box or Pedestal mount ready.",
+                imageSrc: "/products/7.4kw (2).png",
+                thumbnailSrc: "/products/7.4kw (2).png",
+              },
+              {
+                id: 2,
+                name: "ENKO Flow 11",
+                affiliation: "AC SERIES // SYSTEM_NODE_02",
+                quote: "Corporate office campuses and long-stay commercial public parking spaces. 11kW output. Single/three-phase electrical compatibility.",
+                imageSrc: "/products/11kw-22kw.png",
+                thumbnailSrc: "/products/11kw-22kw.png",
+              },
+              {
+                id: 3,
+                name: "ENKO Flow 22",
+                affiliation: "AC SERIES // SYSTEM_NODE_03",
+                quote: "Fleet operator depots, public parking decks, and commercial logistics spaces. 22kW output. Built for high-utilization environments.",
+                imageSrc: "/products/11kw-22kw.png",
+                thumbnailSrc: "/products/11kw-22kw.png",
+              },
+              {
+                id: 4,
+                name: "ENKO Storm 30",
+                affiliation: "DC FAST SERIES // SYSTEM_NODE_04",
+                quote: "Local fleet hubs, commercial retail parking slots, and automobile workshops. 30kW DC fast charging with dual CCS2 guns and IP54 protection.",
+                imageSrc: "/products/30kw.png",
+                thumbnailSrc: "/products/30kw.png",
+              },
+              {
+                id: 5,
+                name: "ENKO Storm 60",
+                affiliation: "DC FAST SERIES // SYSTEM_NODE_05",
+                quote: "Highway fast-charging stops, urban public charging hubs, and fleet operations. 60kW DC fast charging. Priced 31% below PM E-DRIVE benchmark.",
+                imageSrc: "/products/60kw.png",
+                thumbnailSrc: "/products/60kw.png",
+              },
+              {
+                id: 6,
+                name: "ENKO Storm 120",
+                affiliation: "DC FAST SERIES // SYSTEM_NODE_06",
+                quote: "Express highway corridors, major e-bus fleets, and interstate logistics hubs. 120kW DC fast charging. Priced 38% below PM E-DRIVE benchmark.",
+                imageSrc: "/products/120kw.png",
+                thumbnailSrc: "/products/120kw.png",
+              },
+              {
+                id: 7,
+                name: "ENKO Blaze 240",
+                affiliation: "DC ULTRA SERIES // SYSTEM_NODE_07",
+                quote: "Heavy-duty commercial EV bus networks, industrial truck corridors, and extreme-throughput highway hubs. 240kW+ with liquid-cooled dual guns.",
+                imageSrc: "/products/240kw.png",
+                thumbnailSrc: "/products/240kw.png",
+              },
+            ]}
+            className="h-full flex-1"
+          />
         </div>
       </section>
 

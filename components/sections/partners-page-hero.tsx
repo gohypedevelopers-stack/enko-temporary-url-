@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 
 export function PartnersPageHero() {
   return (
-    <section className="relative min-h-[78dvh] overflow-hidden border-b border-warm/10 bg-forge">
+    <section className="relative min-h-[100dvh] flex flex-col justify-center overflow-hidden border-b border-warm/10 bg-forge">
       <Image
         src="/partners/hero_bg.png"
         alt="ENKO partnership infrastructure"
@@ -14,7 +14,7 @@ export function PartnersPageHero() {
       <div className="absolute inset-0 bg-gradient-to-r from-forge via-forge/80 to-forge/20" />
       <div className="absolute inset-0 bg-gradient-to-t from-forge via-transparent to-forge/30" />
 
-      <div className="container-shell relative z-10 flex min-h-[78dvh] items-center pt-24 pb-16">
+      <div className="container-shell relative z-10 flex min-h-[100dvh] items-center pt-24 pb-16">
         <div className="max-w-3xl">
           <p className="text-[10px] font-black uppercase tracking-[0.24em] text-charge">
             Partner Network

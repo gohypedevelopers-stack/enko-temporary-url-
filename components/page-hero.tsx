@@ -8,7 +8,7 @@ interface PageHeroProps {
 
 export function PageHero({ title, description, kicker }: PageHeroProps) {
   return (
-    <section className="border-b border-warm/10 bg-forge text-warm overflow-hidden relative">
+    <section className="min-h-[50dvh] flex flex-col justify-center border-b border-warm/10 bg-forge text-warm overflow-hidden relative">
       <div className="absolute inset-0 z-0">
         <ElectricBorder
           color="#e8a020"

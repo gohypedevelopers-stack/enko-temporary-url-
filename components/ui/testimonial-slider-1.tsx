@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
@@ -25,13 +25,15 @@ interface TestimonialSliderProps {
 export function TestimonialSlider({ reviews, className }: TestimonialSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState<"left" | "right">("right");
+  const [isPaused, setIsPaused] = useState(false);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const activeReview = reviews[currentIndex];
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setDirection("right");
     setCurrentIndex((prev) => (prev + 1) % reviews.length);
-  };
+  }, [reviews.length]);
 
   const handlePrev = () => {
     setDirection("left");
@@ -42,6 +44,20 @@ export function TestimonialSlider({ reviews, className }: TestimonialSliderProps
     setDirection(index > currentIndex ? "right" : "left");
     setCurrentIndex(index);
   };
+
+  // Auto-advance every 4 seconds, pause on hover
+  useEffect(() => {
+    if (isPaused) {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      return;
+    }
+    intervalRef.current = setInterval(() => {
+      handleNext();
+    }, 4000);
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [isPaused, handleNext]);
 
   const thumbnailReviews = reviews.filter((_, index) => index !== currentIndex).slice(0, 4);
 
@@ -72,11 +88,11 @@ export function TestimonialSlider({ reviews, className }: TestimonialSliderProps
   return (
     <div
       className={cn(
-        "relative w-full overflow-hidden border border-warm/10 bg-forge p-5 text-warm sm:p-8 lg:p-12",
+        "relative w-full h-full overflow-hidden bg-transparent text-warm p-5 sm:p-8 lg:p-12",
         className
       )}
     >
-      <div className="grid min-h-[620px] grid-cols-1 gap-8 lg:grid-cols-12">
+      <div className="grid h-full grid-cols-1 gap-8 lg:grid-cols-12">
         <div className="order-2 flex flex-col justify-between lg:order-1 lg:col-span-3">
           <div className="flex items-start justify-between gap-4 lg:block lg:space-y-8">
             <span className="font-mono text-sm font-bold text-warm/45">
@@ -110,8 +126,7 @@ export function TestimonialSlider({ reviews, className }: TestimonialSliderProps
           </div>
         </div>
 
-        <div className="relative order-1 min-h-[360px] overflow-hidden bg-[radial-gradient(ellipse_at_50%_42%,#2e2e2e_0%,#191919_52%,#080808_100%)] lg:order-2 lg:col-span-4 lg:min-h-[540px]">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+        <div className="relative order-1 min-h-[360px] overflow-hidden lg:order-2 lg:col-span-4 lg:min-h-[540px] flex items-center justify-center">
           <AnimatePresence initial={false} custom={direction}>
             <motion.img
               key={currentIndex}
