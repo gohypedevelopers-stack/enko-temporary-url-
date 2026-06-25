@@ -9,6 +9,8 @@ import { PartnerRequestForm } from '@/components/sections/partner-request-form';
 import { FastChargingSolutionsSection } from '@/components/sections/fast-charging-solutions-section';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
+import { FaqSection } from '@/components/sections/faq-section';
+import { ProcurementSection } from '@/components/sections/procurement-section';
 
 export default function PartnersPage() {
   return (
@@ -24,8 +26,8 @@ export default function PartnersPage() {
       <WhyPartnerSection />
 
       {/* Forms & FAQ */}
-      <PartnerFaqSection />
-      <PartnerRequestForm />
+      <FaqSection />
+      <ProcurementSection />
       
       <SiteFooter />
     </main>

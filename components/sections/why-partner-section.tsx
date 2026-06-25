@@ -3,8 +3,9 @@ import { MapPinned, RadioTower, TrendingUp } from 'lucide-react';
 export function WhyPartnerSection() {
   const metrics = [
     { label: 'Deployment count', value: '67+' },
-    { label: 'City coverage', value: '4 states' },
-    { label: 'Target uptime', value: '99%+' },
+    { label: 'City coverage', value: '28 states' },
+    { label: 'Union territory coverage', value: '8 states' },
+    // { label: 'Target uptime', value: '99%+' },
   ];
 
   const cases = [

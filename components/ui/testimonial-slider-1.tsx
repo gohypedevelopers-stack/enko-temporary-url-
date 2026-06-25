@@ -1,0 +1,179 @@
+"use client";
+
+import * as React from "react";
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+
+type Review = {
+  id: string | number;
+  name: string;
+  affiliation: string;
+  quote: string;
+  imageSrc: string;
+  thumbnailSrc: string;
+};
+
+interface TestimonialSliderProps {
+  reviews: Review[];
+  className?: string;
+}
+
+export function TestimonialSlider({ reviews, className }: TestimonialSliderProps) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState<"left" | "right">("right");
+
+  const activeReview = reviews[currentIndex];
+
+  const handleNext = () => {
+    setDirection("right");
+    setCurrentIndex((prev) => (prev + 1) % reviews.length);
+  };
+
+  const handlePrev = () => {
+    setDirection("left");
+    setCurrentIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
+  };
+
+  const handleThumbnailClick = (index: number) => {
+    setDirection(index > currentIndex ? "right" : "left");
+    setCurrentIndex(index);
+  };
+
+  const thumbnailReviews = reviews.filter((_, index) => index !== currentIndex).slice(0, 4);
+
+  const imageVariants = {
+    enter: (slideDirection: "left" | "right") => ({
+      y: slideDirection === "right" ? "100%" : "-100%",
+      opacity: 0,
+    }),
+    center: { y: 0, opacity: 1 },
+    exit: (slideDirection: "left" | "right") => ({
+      y: slideDirection === "right" ? "-100%" : "100%",
+      opacity: 0,
+    }),
+  };
+
+  const textVariants = {
+    enter: (slideDirection: "left" | "right") => ({
+      x: slideDirection === "right" ? 50 : -50,
+      opacity: 0,
+    }),
+    center: { x: 0, opacity: 1 },
+    exit: (slideDirection: "left" | "right") => ({
+      x: slideDirection === "right" ? -50 : 50,
+      opacity: 0,
+    }),
+  };
+
+  return (
+    <div
+      className={cn(
+        "relative w-full overflow-hidden border border-warm/10 bg-forge p-5 text-warm sm:p-8 lg:p-12",
+        className
+      )}
+    >
+      <div className="grid min-h-[620px] grid-cols-1 gap-8 lg:grid-cols-12">
+        <div className="order-2 flex flex-col justify-between lg:order-1 lg:col-span-3">
+          <div className="flex items-start justify-between gap-4 lg:block lg:space-y-8">
+            <span className="font-mono text-sm font-bold text-warm/45">
+              {String(currentIndex + 1).padStart(2, "0")} / {String(reviews.length).padStart(2, "0")}
+            </span>
+            <h3 className="hidden text-xs font-black uppercase tracking-[0.28em] text-charge [writing-mode:vertical-rl] lg:block lg:rotate-180">
+              Product Range
+            </h3>
+          </div>
+
+          <div className="mt-8 flex gap-2 overflow-x-auto pb-1 lg:mt-0 lg:flex-wrap">
+            {thumbnailReviews.map((review) => {
+              const originalIndex = reviews.findIndex((item) => item.id === review.id);
+
+              return (
+                <button
+                  key={review.id}
+                  type="button"
+                  onClick={() => handleThumbnailClick(originalIndex)}
+                  className="relative h-20 w-16 flex-shrink-0 overflow-hidden border border-warm/10 bg-steel/60 opacity-60 transition hover:border-charge hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-charge lg:h-24 lg:w-20"
+                  aria-label={`View ${review.name}`}
+                >
+                  <img
+                    src={review.thumbnailSrc}
+                    alt={review.name}
+                    className="h-full w-full object-contain p-2"
+                  />
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="relative order-1 min-h-[360px] overflow-hidden bg-[radial-gradient(ellipse_at_50%_42%,#2e2e2e_0%,#191919_52%,#080808_100%)] lg:order-2 lg:col-span-4 lg:min-h-[540px]">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+          <AnimatePresence initial={false} custom={direction}>
+            <motion.img
+              key={currentIndex}
+              src={activeReview.imageSrc}
+              alt={activeReview.name}
+              custom={direction}
+              variants={imageVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+              className="absolute inset-0 h-full w-full object-contain p-8 drop-shadow-[0_0_36px_rgba(232,160,32,0.18)]"
+            />
+          </AnimatePresence>
+        </div>
+
+        <div className="order-3 flex flex-col justify-between lg:col-span-5 lg:pl-8">
+          <div className="relative min-h-[260px] overflow-hidden pt-2 lg:pt-20">
+            <AnimatePresence initial={false} custom={direction} mode="wait">
+              <motion.div
+                key={currentIndex}
+                custom={direction}
+                variants={textVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+              >
+                <p className="text-[10px] font-black uppercase tracking-[0.24em] text-charge">
+                  {activeReview.affiliation}
+                </p>
+                <h3 className="mt-3 text-3xl font-black uppercase leading-tight text-warm sm:text-4xl">
+                  {activeReview.name}
+                </h3>
+                <blockquote className="mt-7 border-l-2 border-charge pl-5 text-base leading-7 text-warm/75 sm:text-lg">
+                  {activeReview.quote}
+                </blockquote>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          <div className="mt-8 flex items-center gap-2 lg:mt-0">
+            <Button
+              variant="outline"
+              size="icon"
+              className="rounded-full"
+              onClick={handlePrev}
+              aria-label="Previous product"
+            >
+              <ArrowLeft className="h-5 w-5" />
+            </Button>
+            <Button
+              size="icon"
+              className="rounded-full"
+              onClick={handleNext}
+              aria-label="Next product"
+            >
+              <ArrowRight className="h-5 w-5" />
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
