@@ -17,7 +17,7 @@ export function PartnersSection() {
               key={segment.title}
               className="border border-warm/15 p-8 lg:p-10 bg-steel transition-colors hover:border-charge group"
             >
-              <p className="label-kicker text-warm/40 group-hover:text-charge transition-colors">
+              <p className="label-kicker text-warm/40 group-hover:text-charge transition-colors duration-300">
                 Segment {String(index + 1).padStart(2, '0')}
               </p>
               <h2 className="mt-4 text-2xl lg:text-3xl font-black uppercase text-charge">

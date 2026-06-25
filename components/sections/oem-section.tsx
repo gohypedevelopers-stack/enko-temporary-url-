@@ -1,8 +1,12 @@
+"use client";
+
+import { Reveal } from '@/components/reveal';
+
 export function OemSection() {
   return (
     <section 
       id="about" 
-      className="relative overflow-hidden pt-32 pb-32 border-b border-warm/10 bg-steel"
+      className="relative min-h-[100dvh] flex flex-col justify-center overflow-hidden py-32 border-b border-warm/10 bg-steel"
       style={{
         backgroundImage: "url('https://i.postimg.cc/tRFCJVLM/handshake-enko.jpg')",
         backgroundSize: "cover",
@@ -15,31 +19,28 @@ export function OemSection() {
       <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-transparent to-transparent opacity-80" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
         {/* Centered Content */}
-        <div className="flex flex-col items-center justify-center text-center space-y-6">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-charge drop-shadow-md">
-            Partner portal access
-          </p>
-
-          <h2 className="text-4xl sm:text-5xl lg:text-[60px] font-black uppercase leading-[1.05] text-warm tracking-tight drop-shadow-xl">
-            OEM READY. ELECTRIFYING TO DRIVE
-          </h2>
-
-          <div className="flex flex-col space-y-4 max-w-2xl mt-4">
-            <p className="text-sm md:text-base text-warm/90 font-medium leading-relaxed drop-shadow-md">
-              Deploy our rugged hardware under your own brand. Comprehensive customization options from chassis colorways to firmware and API integration.
+        <Reveal direction="up">
+          <div className="flex flex-col items-center justify-center text-center space-y-6">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-charge drop-shadow-md">
+              Partner portal access
             </p>
-            <p className="text-sm md:text-base text-warm/90 font-medium leading-relaxed drop-shadow-md">
-              Fully integrated systems that connect the charging network with back-end solutions seamlessly.
-            </p>
+            <h2 className="text-4xl sm:text-5xl lg:text-[60px] font-black uppercase leading-[1.05] text-warm tracking-tight drop-shadow-xl">
+              OEM READY. ELECTRIFYING TO DRIVE
+            </h2>
+            <div className="flex flex-col space-y-4 max-w-2xl mt-4">
+              <p className="text-sm md:text-base text-warm/90 font-medium leading-relaxed drop-shadow-md">
+                Deploy our rugged hardware under your own brand. Comprehensive customization options from chassis colorways to firmware and API integration.
+              </p>
+              <p className="text-sm md:text-base text-warm/90 font-medium leading-relaxed drop-shadow-md">
+                Fully integrated systems that connect the charging network with back-end solutions seamlessly.
+              </p>
+            </div>
+            <a href="/partners" className="mt-8 inline-block bg-charge text-forge px-10 py-4 font-bold uppercase tracking-widest text-sm rounded-sm hover:bg-warm transition-colors shadow-[0_0_40px_rgba(232,160,32,0.4)]">
+              Access Portal &rarr;
+            </a>
           </div>
-
-          <a href="/partners" className="mt-8 inline-block bg-charge text-forge px-10 py-4 font-bold uppercase tracking-widest text-sm rounded-sm hover:bg-warm transition-colors shadow-[0_0_40px_rgba(232,160,32,0.4)]">
-            Access Portal &rarr;
-          </a>
-        </div>
-
+        </Reveal>
       </div>
     </section>
   );

@@ -1,19 +1,37 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { navItems } from '@/lib/site-data';
 
 export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const isHomePage = pathname === '/';
   const isContactActive = pathname === '/contact';
 
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show bg after scrolling past the hero (100vh)
+      setScrolled(window.scrollY > window.innerHeight * 0.8);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // run on mount
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const hasBg = !isHomePage || scrolled;
   return (
-    <header className="sticky top-0 z-50 bg-forge border-b border-warm/10">
+    <>
+      <header className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-500 ${hasBg ? 'bg-forge border-warm/10' : 'bg-transparent border-transparent'}`}>
       <div className="container-shell flex items-center justify-between py-4 text-[11px] font-semibold uppercase tracking-[0.18em]">
         <a href="/" className="flex items-center">
-          <img src="/Enko logo.png" alt="ENKO Logo" className="h-32 w-auto object-contain -my-10 scale-125 origin-left" />
+          <img 
+            src="/Enko logo.png" 
+            alt="ENKO Logo" 
+            className="h-32 w-auto object-contain -my-10 scale-125 origin-left transition-all duration-500" 
+          />
         </a>
 
         {/* Desktop Nav */}
@@ -22,7 +40,7 @@ export function SiteHeader() {
             <a 
               key={item.label} 
               href={item.href} 
-              className={`transition ${pathname === item.href ? 'text-charge' : 'text-warm/70 hover:text-warm'}`}
+              className={`transition-colors duration-500 ${pathname === item.href ? 'text-charge' : 'text-white hover:text-white/80'}`}
             >
               {item.label}
             </a>
@@ -33,7 +51,11 @@ export function SiteHeader() {
         <div className="flex items-center gap-4">
           <a
             href="/contact"
-            className={`hidden sm:inline-block border px-4 py-2 transition hover:bg-charge hover:text-forge hover:border-charge ${isContactActive ? 'border-charge bg-charge text-forge' : 'border-warm bg-warm text-forge'}`}
+            className={`hidden sm:inline-flex items-center justify-center px-6 py-2.5 text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-500 border ${
+              !hasBg 
+                ? 'border-white/40 text-white hover:bg-white hover:text-forge hover:border-white' 
+                : 'border-warm/30 text-warm hover:bg-charge hover:text-forge hover:border-charge'
+            } ${isContactActive ? (hasBg ? 'bg-charge text-forge border-charge' : 'bg-white text-forge border-white') : ''}`}
           >
             Request Quote
           </a>
@@ -65,7 +87,7 @@ export function SiteHeader() {
               key={item.label}
               href={item.href}
               onClick={() => setIsOpen(false)}
-              className={`py-1 transition-colors ${pathname === item.href ? 'text-charge' : 'text-warm/70 hover:text-warm'}`}
+              className={`py-1 transition-colors duration-500 ${pathname === item.href ? 'text-charge' : 'text-white hover:text-white/80'}`}
             >
               {item.label}
             </a>
@@ -73,12 +95,18 @@ export function SiteHeader() {
           <a
             href="/contact"
             onClick={() => setIsOpen(false)}
-            className={`mt-4 sm:hidden block text-center border px-4 py-3 transition hover:bg-charge hover:text-forge hover:border-charge ${isContactActive ? 'border-charge bg-charge text-forge' : 'border-warm bg-warm text-forge'}`}
+            className={`mt-4 sm:hidden flex items-center justify-center text-center px-4 py-3 text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-500 border ${
+              !hasBg 
+                ? 'border-white/40 text-white hover:bg-white hover:text-forge hover:border-white' 
+                : 'border-warm/30 text-warm hover:bg-charge hover:text-forge hover:border-charge'
+            } ${isContactActive ? (hasBg ? 'bg-charge text-forge border-charge' : 'bg-white text-forge border-white') : ''}`}
           >
             Request Quote
           </a>
         </nav>
       </div>
     </header>
+      {!isHomePage && <div className="h-[72px]" />}
+    </>
   );
 }

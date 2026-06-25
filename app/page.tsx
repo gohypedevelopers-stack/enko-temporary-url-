@@ -1,5 +1,4 @@
 import { HeroSection } from '@/components/sections/hero-section';
-import { StatsSection } from '@/components/sections/stats-section';
 import { OemSection } from '@/components/sections/oem-section';
 import { ServiceSection } from '@/components/sections/service-section';
 import { MetricsSection } from '@/components/sections/metrics-section';
@@ -15,10 +14,9 @@ export default function HomePage() {
     <main>
       <SiteHeader />
       <HeroSection />
-      <StatsSection />
       <BlogSection />
       <WhyEvSection />
-      <ServiceSection />
+      {/* <ServiceSection /> */}
       {/* <MetricsSection /> */}
       <FaqSection />
       <OemSection />

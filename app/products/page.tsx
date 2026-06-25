@@ -142,7 +142,7 @@ type ProductCardProps = {
 function ProductCard({ product, isOpen, onToggle }: ProductCardProps) {
   return (
     <div className="bg-forge border border-warm/10 rounded-2xl overflow-hidden hover:border-charge/40 transition-all duration-300 group flex flex-col">
-      <div className="relative bg-[#282828] h-80 flex items-center justify-center p-6 flex-shrink-0">
+      <div className="relative h-80 flex items-center justify-center p-6 flex-shrink-0" style={{ background: 'radial-gradient(ellipse at 50% 40%, #2e2e2e 0%, #191919 55%, #0a0a0a 100%)' }}>
         <p className="absolute top-3 left-3 text-[7px] font-bold uppercase tracking-[0.2em] text-charge/70">[ {product.tag} ]</p>
         <Image src={product.image} alt={product.name} fill className="object-contain p-4 group-hover:scale-105 transition-transform duration-500" />
       </div>
@@ -239,7 +239,7 @@ export default function ProductsPage() {
 
 
       {/* Key Benefits Section */}
-      <section className="pt-32 pb-8 md:pb-12 relative overflow-hidden bg-forge border-b border-warm/10">
+      <section className="pt-32 pb-8 md:pb-12 relative overflow-hidden border-b border-warm/10" style={{ background: 'radial-gradient(ellipse at 50% 40%, #2e2e2e 0%, #191919 55%, #0a0a0a 100%)' }}>
         <div className="container-shell text-center mb-16 relative z-10">
           <h2 className="text-4xl lg:text-5xl font-black uppercase mb-4 text-warm">Key Benefits</h2>
           <p className="text-warm/60 max-w-2xl mx-auto text-sm">

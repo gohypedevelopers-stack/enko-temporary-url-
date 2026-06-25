@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { useInView } from 'framer-motion';
+import { Reveal } from '@/components/reveal';
 
 function AnimatedCircleStat({ target, label }: { target: number, label: string }) {
   const [value, setValue] = useState(0);
@@ -50,11 +51,11 @@ function AnimatedCircleStat({ target, label }: { target: number, label: string }
 
 export function ServiceSection() {
   return (
-    <section id="benefits" className="w-full">
+    <section id="benefits" className="min-h-[100dvh] flex flex-col justify-center w-full bg-forge">
       <div className="grid grid-cols-1 lg:grid-cols-2">
 
         {/* Top Left: Car Image */}
-        <div className="relative aspect-square sm:aspect-video lg:aspect-auto lg:h-[500px] w-full bg-forge overflow-hidden group">
+        <Reveal direction="left" className="relative aspect-square sm:aspect-video lg:aspect-auto lg:h-[500px] w-full bg-forge overflow-hidden group">
           <img
             src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&q=80&w=1200"
             alt="Car Wheel"
@@ -65,10 +66,10 @@ export function ServiceSection() {
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/70 mb-2">SMART SOLUTIONS</p>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase text-white leading-tight">BENEFITS OF EV</h2>
           </div>
-        </div>
+        </Reveal>
 
         {/* Top Right: Quote */}
-        <div className="bg-[#0a0a0a] flex flex-col justify-center px-8 sm:px-16 lg:px-20 py-16 lg:h-[500px] w-full border-b lg:border-b-0 lg:border-l border-white/5">
+        <Reveal direction="right" className="bg-[#0a0a0a] flex flex-col justify-center px-8 sm:px-16 lg:px-20 py-16 lg:h-[500px] w-full border-b lg:border-b-0 lg:border-l border-white/5">
           <div className="mb-6">
             <span className="text-[#E8A020] text-5xl sm:text-6xl font-serif leading-none">"</span>
           </div>
@@ -76,19 +77,19 @@ export function ServiceSection() {
             It is not just a charger for power, it's the
             bridge to a greener future.
           </p>
-        </div>
+        </Reveal>
 
         {/* Bottom Left: Circular Stats */}
-        <div className="bg-[#111] flex flex-col items-center justify-center px-4 py-16 lg:h-[500px] w-full border-t lg:border-t-0 border-white/5">
+        <Reveal direction="up" delay={0.1} className="bg-[#111] flex flex-col items-center justify-center px-4 py-16 lg:h-[500px] w-full border-t lg:border-t-0 border-white/5">
           <div className="flex flex-wrap justify-center gap-8 md:gap-12 lg:gap-16">
             <AnimatedCircleStat target={75} label="HOME STATIONS" />
             <AnimatedCircleStat target={54} label="COMMERCIAL SYSTEMS" />
             <AnimatedCircleStat target={60} label="PUBLIC CHARGER" />
           </div>
-        </div>
+        </Reveal>
 
         {/* Bottom Right: Public Charging Station Image */}
-        <div className="relative aspect-square sm:aspect-video lg:aspect-auto lg:h-[500px] w-full bg-forge overflow-hidden group">
+        <Reveal direction="right" className="relative aspect-square sm:aspect-video lg:aspect-auto lg:h-[500px] w-full bg-forge overflow-hidden group">
           <img
             src="https://i.postimg.cc/FRHPkcKJ/Chat-GPT-Image-Jun-24-2026-12-34-22-PM.png"
             alt="Global Charging Infrastructure"
@@ -99,7 +100,7 @@ export function ServiceSection() {
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E8A020] mb-2">CHARGING INFRASTRUCTURE</p>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase text-white leading-tight">PUBLIC SERVICE</h2>
           </div>
-        </div>
+        </Reveal>
 
       </div>
     </section>

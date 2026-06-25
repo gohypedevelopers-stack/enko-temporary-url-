@@ -1,8 +1,16 @@
 'use client';
 
+import { useState } from 'react';
 import { faqs, publicStats } from '@/lib/site-data';
+import { Reveal } from '@/components/reveal';
 
 export function FaqSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const toggleFaq = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   const stats = [
     { ...publicStats[0], icon: "M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z" },
     { ...publicStats[1], icon: "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" },
@@ -11,50 +19,85 @@ export function FaqSection() {
   ];
 
   return (
-    <section className="bg-steel py-24 border-b border-warm/10">
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Header */}
-        <div className="mb-12">
-          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-charge mb-3">FAQ's Questions</p>
-          <h2 className="text-3xl md:text-5xl font-black uppercase text-warm leading-tight max-w-3xl">
-            WE HOPE YOU FIND WHAT YOU ARE LOOKING FOR. EXPLORE FAQ'S.
-          </h2>
-        </div>
-        
-        {/* FAQ Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 mb-24">
-          {faqs.map((faq, index) => (
-            <div key={index} className="flex items-start">
-              <div className="w-1.5 h-1.5 rounded-full bg-charge mt-2 mr-4 flex-shrink-0" />
-              <div>
-                <h3 className="text-base font-bold text-charge uppercase tracking-wide leading-tight mb-2">
-                  {faq.q}
-                </h3>
-                <p className="text-sm text-warm/70 leading-relaxed font-medium">
-                  {faq.a}
-                </p>
-              </div>
-            </div>
-          ))}
+    <section className="min-h-[100dvh] flex flex-col justify-center bg-steel py-24 border-b border-warm/10">
+      <div className="max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-24">
+
+          {/* Left Column: Header */}
+          <div className="lg:col-span-4 flex flex-col space-y-6 lg:sticky lg:top-32">
+            <Reveal>
+              <h2 className="text-5xl md:text-6xl lg:text-[72px] font-black text-warm leading-[1.05] tracking-tight mb-6">
+                <br />Frequently Asked Questions
+              </h2>
+              <p className="text-lg lg:text-xl text-warm/70 leading-relaxed max-w-sm pr-4">
+                WE HOPE YOU FIND WHAT YOU ARE LOOKING FOR. EXPLORE FAQ'S.
+              </p>
+            </Reveal>
+          </div>
+
+          {/* Right Column: FAQ Accordion */}
+          <div className="lg:col-span-8 flex flex-col gap-4">
+            {faqs.map((faq, index) => {
+              const isOpen = openIndex === index;
+              const num = (index + 1).toString().padStart(2, '0');
+              return (
+                <Reveal key={index} delay={index * 0.05} direction="up">
+                  <div
+                    className={`border-b border-warm/10 pb-4 transition-colors ${isOpen ? 'border-charge/30' : ''}`}
+                  >
+                    <button
+                      onClick={() => toggleFaq(index)}
+                      className="w-full flex items-center justify-between text-left py-4 group"
+                    >
+                      <span className={`text-base lg:text-lg font-bold uppercase tracking-wide pr-8 flex items-center gap-4 ${isOpen ? 'text-charge' : 'text-warm group-hover:text-charge transition-colors'}`}>
+                        <span className="text-xs text-warm/40 font-mono">{num}</span>
+                        {faq.q}
+                      </span>
+                      <div className="flex-shrink-0 text-warm/40 group-hover:text-charge transition-colors">
+                        {isOpen ? (
+                          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                          </svg>
+                        ) : (
+                          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        )}
+                      </div>
+                    </button>
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100 mt-2' : 'max-h-0 opacity-0'}`}
+                    >
+                      <p className="text-sm lg:text-base text-warm/60 leading-relaxed pr-8 pb-4 pl-8">
+                        {faq.a}
+                      </p>
+                    </div>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
         </div>
 
         {/* Stats Row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 border-t border-warm/10">
-          {stats.map((stat, idx) => (
-            <div key={idx} className="flex items-center space-x-4">
-               <div className="w-8 h-8 flex-shrink-0 text-charge">
+        <Reveal delay={0.2}>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 border-t border-warm/10">
+            {stats.map((stat, idx) => (
+              <div key={idx} className="flex items-center space-x-4">
+                <div className="w-8 h-8 flex-shrink-0 text-charge">
                   <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d={stat.icon} />
                   </svg>
-               </div>
-               <div>
-                 <p className="text-xl font-black text-warm">{stat.value}</p>
-                 <p className="text-[10px] font-bold uppercase text-warm/60">{stat.label}</p>
-               </div>
-            </div>
-          ))}
-        </div>
+                </div>
+                <div>
+                  <p className="text-xl font-black text-warm">{stat.value}</p>
+                  <p className="text-[10px] font-bold uppercase text-warm/60">{stat.label}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Reveal>
 
       </div>
     </section>

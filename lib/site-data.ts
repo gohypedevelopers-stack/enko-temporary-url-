@@ -9,10 +9,10 @@ export const navItems = [
 export const whatsappUrl = 'https://wa.me/919876543210?text=Hello%20ENKO%2C%20I%20want%20to%20discuss%20EV%20charging%20hardware%20for%20my%20deployment.';
 
 export const publicStats = [
-  { label: 'Charging Stations', value: '450+' },
+  { label: 'Charging Stations', value: '100+' },
   { label: 'Active Users', value: '140+' },
-  { label: 'Partner Programs', value: '10+' },
-  { label: 'Director Experience', value: '50+ Years' },
+  { label: 'Partner Programs', value: '5+' },
+  { label: 'Manufacturing Experience', value: '50+ Years' },
 ];
 
 export const metrics = [

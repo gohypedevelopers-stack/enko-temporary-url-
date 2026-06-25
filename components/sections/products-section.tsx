@@ -6,13 +6,13 @@ function ProductCard({ card, index }: { card: typeof productCards[0], index: num
   const [showSpecs, setShowSpecs] = useState(false);
 
   return (
-    <article className="bg-steel border border-warm/5 p-6 rounded-sm shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col justify-between self-start transition-all hover:shadow-[0_8px_30px_rgb(0,0,0,0.4)]">
+    <article className="border border-warm/5 p-6 rounded-sm shadow-[0_8px_30px_rgb(0,0,0,0.4)] flex flex-col justify-between self-start transition-all hover:shadow-[0_8px_30px_rgba(232,160,32,0.1)] hover:border-warm/20" style={{ background: 'radial-gradient(ellipse at 50% 30%, #2e2e2e 0%, #191919 55%, #0a0a0a 100%)' }}>
       <div>
         <p className="mb-4 text-[10px] font-black uppercase tracking-[0.16em] text-charge">
           {card.tag}
         </p>
-        <div className="h-64 bg-forge border border-warm/5 shadow-sm rounded-sm relative overflow-hidden flex items-center justify-center">
-          <img src={card.image} alt={card.name} className="max-w-full max-h-full object-contain p-4 mix-blend-screen opacity-90" />
+        <div className="h-64 rounded-sm relative overflow-hidden flex items-center justify-center">
+          <img src={card.image} alt={card.name} className="max-w-full max-h-full object-contain p-4 opacity-95" />
         </div>
         <h3 className="mt-6 text-xl font-black text-warm">
           {index}. {card.name}

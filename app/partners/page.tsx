@@ -1,6 +1,11 @@
-import { PartnersSection } from '@/components/sections/partners-section';
+import { PartnerHeroSection } from '@/components/sections/partner-hero-section';
+import { PartnerFeaturesSection } from '@/components/sections/partner-features-section';
+
+import { WhyPartnerSection } from '@/components/sections/why-partner-section';
+import { PartnerFaqSection } from '@/components/sections/partner-faq-section';
+import { PartnerRequestForm } from '@/components/sections/partner-request-form';
+
 import { FastChargingSolutionsSection } from '@/components/sections/fast-charging-solutions-section';
-import { PageHero } from '@/components/page-hero';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 
@@ -8,13 +13,20 @@ export default function PartnersPage() {
   return (
     <main>
       <SiteHeader />
-      <PageHero
-        title="B2B Partners"
-        description="Built for charge point operators, OEMs, and fleet logistics providers."
-        kicker="Network Integration"
-      />
+      
+      {/* New Partner Landing Page Sections */}
+      <PartnerHeroSection />
+      <PartnerFeaturesSection />
+
+      <WhyPartnerSection />
+      
+      {/* Existing Content */}
       <FastChargingSolutionsSection />
-      <PartnersSection />
+
+      {/* Forms & FAQ */}
+      <PartnerFaqSection />
+      <PartnerRequestForm />
+      
       <SiteFooter />
     </main>
   );

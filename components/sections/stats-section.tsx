@@ -29,7 +29,7 @@ export function StatsSection() {
   ];
 
   return (
-    <section className="w-full">
+    <section className="min-h-[100dvh] flex flex-col justify-center w-full bg-[#111]">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-full h-full">
         {stats.map((stat, idx) => (
           <div 
