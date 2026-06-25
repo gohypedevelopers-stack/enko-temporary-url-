@@ -1,51 +1,97 @@
+import { MapPinned, RadioTower, TrendingUp } from 'lucide-react';
+
 export function WhyPartnerSection() {
-  const cards = [
+  const metrics = [
+    { label: 'Deployment count', value: '67+' },
+    { label: 'City coverage', value: '4 states' },
+    { label: 'Target uptime', value: '99%+' },
+  ];
+
+  const cases = [
     {
-      num: '01',
-      title: 'Reliability',
-      desc: 'Unprecedented uptime across our India-wide EV charging infrastructure.'
+      type: 'Logistics Operator',
+      size: '12-unit depot installation',
+      location: 'Chennai',
+      outcome: '40% reduction in vehicle turnaround time',
+      icon: TrendingUp,
     },
     {
-      num: '02',
-      title: 'Transparency',
-      desc: 'Complete visibility of your chargers performance through our Proprietary Partner Management Software Platform.'
+      type: 'South India CPO',
+      size: 'DC fast chargers across highway networks',
+      location: 'Tamil Nadu and Kerala corridors',
+      outcome: 'Improved uptime planning while protecting project margins',
+      icon: RadioTower,
     },
-    {
-      num: '03',
-      title: 'Flexibility',
-      desc: 'Tailor-made solutions to suit your specific business requirements, ensuring optimal performance and efficiency.'
-    }
   ];
 
   return (
-    <section className="min-h-[100dvh] flex flex-col justify-center bg-[#0c0c0c] py-24 border-b border-warm/10">
-      <div className="container-shell">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-black uppercase text-center text-warm mb-16">
-          Why <span className="text-charge">Partner</span> With Us?
-        </h2>
+    <section className="relative overflow-hidden border-b border-warm/10 bg-[#0a0a0a] py-16 lg:py-24">
+      <div className="container-shell relative z-10">
+        <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-3xl">
+            <p className="label-kicker text-charge">Results from the Field</p>
+            <h2 className="mt-4 text-3xl font-black uppercase leading-[1.05] text-warm sm:text-4xl lg:text-5xl">
+              Deployments in action.
+            </h2>
+          </div>
+          <div className="flex items-center gap-2 text-sm text-warm/60">
+            <MapPinned className="h-4 w-4 text-charge" />
+            Tamil Nadu, Kerala, Andhra Pradesh, Karnataka
+          </div>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {cards.map((card, idx) => (
-            <div 
-              key={idx} 
-              className="bg-steel/30 backdrop-blur-md border border-warm/10 p-8 rounded-lg hover:border-charge/50 transition-colors group"
-            >
-              <div className="flex justify-between items-start mb-6">
-                <div className="w-10 h-10 rounded-full bg-forge border border-warm/20 flex items-center justify-center text-warm group-hover:text-charge transition-colors">
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-                <span className="text-3xl font-black text-warm/20 group-hover:text-warm/40 transition-colors">
-                  {card.num}
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-warm mb-3">{card.title}</h3>
-              <p className="text-sm text-warm/60 leading-relaxed">
-                {card.desc}
-              </p>
+        <div className="mt-10 grid border border-warm/10 bg-steel/40 md:grid-cols-3">
+          {metrics.map((metric) => (
+            <div key={metric.label} className="border-b border-warm/10 p-6 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0">
+              <p className="text-4xl font-black text-charge">{metric.value}</p>
+              <p className="mt-2 text-[10px] font-black uppercase tracking-[0.16em] text-warm/45">{metric.label}</p>
             </div>
           ))}
+        </div>
+
+        <div className="mt-8 flex flex-wrap gap-3">
+          {['Logistics', 'Highway CPO', 'Fleet Depots', 'Commercial Real Estate', 'OEM Programs'].map((tag) => (
+            <span key={tag} className="border border-warm/10 bg-forge px-4 py-2 text-[10px] font-black uppercase tracking-[0.14em] text-warm/55">
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <div className="mt-8 grid gap-6 lg:grid-cols-2">
+          {cases.map((item) => {
+            const Icon = item.icon;
+            return (
+              <article key={item.type} className="border border-warm/10 bg-steel/35 p-6 lg:p-8">
+                <div className="flex items-center justify-between gap-4">
+                  <p className="label-kicker text-charge">{item.type}</p>
+                  <Icon className="h-5 w-5 text-charge" />
+                </div>
+                <dl className="mt-8 grid gap-5 text-sm">
+                  <div className="spec-line">
+                    <dt className="text-warm/45">Deployment Size</dt>
+                    <dd className="max-w-xs text-right font-bold text-warm">{item.size}</dd>
+                  </div>
+                  <div className="spec-line">
+                    <dt className="text-warm/45">Location</dt>
+                    <dd className="max-w-xs text-right font-bold text-warm">{item.location}</dd>
+                  </div>
+                  <div className="spec-line">
+                    <dt className="text-warm/45">Outcome</dt>
+                    <dd className="max-w-xs text-right font-bold text-charge">{item.outcome}</dd>
+                  </div>
+                </dl>
+              </article>
+            );
+          })}
+        </div>
+
+        <div className="mt-10 flex justify-start">
+          <a
+            href="#request-form"
+            className="industrial-button border-warm bg-warm text-forge hover:border-charge hover:bg-charge"
+          >
+            Share Your Deployment Specs
+          </a>
         </div>
       </div>
     </section>

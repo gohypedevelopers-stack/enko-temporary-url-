@@ -1,3 +1,4 @@
+import { PartnersPageHero } from '@/components/sections/partners-page-hero';
 import { PartnerHeroSection } from '@/components/sections/partner-hero-section';
 import { PartnerFeaturesSection } from '@/components/sections/partner-features-section';
 
@@ -14,14 +15,13 @@ export default function PartnersPage() {
     <main>
       <SiteHeader />
       
-      {/* New Partner Landing Page Sections */}
+      {/* Partner Page Sections */}
+      <PartnersPageHero />
       <PartnerHeroSection />
       <PartnerFeaturesSection />
-
-      <WhyPartnerSection />
       
-      {/* Existing Content */}
       <FastChargingSolutionsSection />
+      <WhyPartnerSection />
 
       {/* Forms & FAQ */}
       <PartnerFaqSection />

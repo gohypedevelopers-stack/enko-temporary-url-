@@ -1,12 +1,14 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 import { publicStats } from '@/lib/site-data';
-import { Check, CheckCheck, Play, Star, CheckCircle2, ShieldCheck, Globe } from 'lucide-react';
+import { Check, CheckCheck, Play, Star, CheckCircle2, ShieldCheck, Globe, Target, Eye, History, Zap, BatteryCharging, ArrowRight } from 'lucide-react';
 
 type CardBlock = { title: string; body: string; accent: boolean };
 type Card = { tag: string; heading: string; blocks: CardBlock[] };
@@ -82,193 +84,237 @@ function StaggeredCards({ cards }: { cards: Card[] }) {
 
 
 export default function AboutPage() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"]
+  });
+
+  const dot1Opacity = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
+  const dot2Opacity = useTransform(scrollYProgress, [0.4, 0.5], [0, 1]);
+  const dot3Opacity = useTransform(scrollYProgress, [0.9, 1.0], [0, 1]);
+
   return (
     <main className="bg-forge text-warm">
       <SiteHeader />
 
       {/* Hero Section */}
-      <section className="container-shell py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center border-b border-warm/10">
-        <div className="flex flex-col items-start">
+      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden border-b border-warm/10">
+        {/* Abstract Background */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+          <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-charge/20 rounded-full blur-[120px] opacity-50"></div>
+        </div>
 
-          <h1 className="text-5xl lg:text-7xl font-black uppercase leading-[0.95] mb-6">
-            Crafting Excellence Together
+        <div className="container-shell relative z-10 text-center max-w-5xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-charge/30 bg-charge/5 text-charge text-xs font-bold uppercase tracking-widest mb-8">
+            <span className="w-2 h-2 rounded-full bg-charge animate-pulse"></span>
+            Building The Future
+          </div>
+          <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-black uppercase leading-[0.85] tracking-tight mb-8">
+            Crafting <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-warm via-warm to-charge/50">Excellence</span>
           </h1>
-          <p className="text-warm/75 text-lg leading-relaxed mb-8">
-            At ENKO we are committed to revolutionizing the EV infrastructure industry with innovative, sustainable, and cost-effective solutions. With a proven track record of delivering exceptional charging hubs, we combine state-of-the-art technology, skilled expertise, and customer-centric approaches to bring visions to life.
+          <p className="text-warm/60 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-12">
+            At ENKO we are committed to revolutionizing the EV infrastructure industry. With a proven track record of delivering exceptional charging hubs, we combine state-of-the-art technology and skilled expertise to bring visions to life.
           </p>
         </div>
+      </section>
 
-        {/* Image Grid */}
-        <div className="grid grid-cols-2 gap-4 h-[400px] lg:h-[500px]">
-          <div className="col-span-1 h-full rounded-2xl overflow-hidden bg-steel relative">
-            <Image src="/images/white_electric_car.png" alt="Engineering" fill className="object-cover" />
-          </div>
-          <div className="col-span-1 grid grid-rows-2 gap-4 h-full">
-            <div className="row-span-1 rounded-2xl overflow-hidden bg-steel relative">
-              <div className="absolute inset-0 bg-charge/20 mix-blend-multiply"></div>
-              <Image src="/images/metrics_public.png" alt="Team" fill className="object-cover" />
+
+
+      {/* Editorial Sections (Mission, Vision, History) */}
+      <section ref={containerRef} className="pb-20 pt-10 lg:pb-32 lg:pt-16 overflow-hidden border-b border-warm/10 relative">
+        <div className="container-shell space-y-32 relative">
+
+          {/* Vertical Scroll Timeline Line */}
+          <div className="absolute left-[39%] lg:left-[41.66%] -translate-x-[2rem] top-12 bottom-12 w-[2px] bg-warm/10 hidden lg:block rounded-full z-0">
+            <motion.div 
+              className="absolute top-0 left-0 w-full bg-charge origin-top rounded-full"
+              style={{ scaleY: scrollYProgress, bottom: 0, top: 0 }}
+            />
+            {/* Timeline Dots */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-forge border-2 border-charge z-10 overflow-hidden">
+              <motion.div className="w-full h-full bg-charge" style={{ opacity: dot1Opacity }} />
             </div>
-            <div className="row-span-1 rounded-2xl overflow-hidden bg-steel relative flex items-center justify-center p-6">
-              {/* Decorative badge */}
-              <div className="relative w-32 h-32 flex items-center justify-center">
-                <svg className="absolute inset-0 w-full h-full animate-[spin_10s_linear_infinite]" viewBox="0 0 100 100">
-                  <circle cx="50" cy="50" r="48" fill="none" stroke="#e8a020" strokeWidth="2" strokeDasharray="10 5" />
-                </svg>
-                <span className="text-charge font-black uppercase text-center text-sm tracking-widest leading-tight">Future<br />Ready</span>
+            <div className="absolute top-[50%] left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-forge border-2 border-charge z-10 -translate-y-1/2 overflow-hidden">
+              <motion.div className="w-full h-full bg-charge" style={{ opacity: dot2Opacity }} />
+            </div>
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-forge border-2 border-charge z-10 overflow-hidden">
+              <motion.div className="w-full h-full bg-charge" style={{ opacity: dot3Opacity }} />
+            </div>
+          </div>
+          
+          {/* Mission */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start relative">
+            <div className="hidden lg:block lg:col-span-5 relative">
+               <div className="sticky top-32 text-[15rem] font-black leading-none tracking-tighter -ml-12 relative">
+                 <div className="text-warm/5">01</div>
+                 <motion.div className="absolute inset-0 text-charge/20" style={{ opacity: dot1Opacity }}>01</motion.div>
+               </div>
+            </div>
+            <div className="lg:col-span-7 pt-8">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-12 h-12 rounded-full bg-charge/10 flex items-center justify-center text-charge">
+                   <Target className="w-6 h-6" />
+                </div>
+                <h2 className="text-4xl lg:text-5xl font-black uppercase tracking-tight text-warm">Our Mission</h2>
+              </div>
+              <p className="text-warm/60 text-lg leading-relaxed mb-10">
+                To provide exceptional infrastructure services that exceed client expectations through innovation, quality craftsmanship, and a commitment to sustainability. We aim to build lasting relationships and create spaces that enhance communities. Through precision, expertise, and a customer-centric approach, we strive to exceed expectations in every project.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {[
+                  "Fostering Sustainable Growth and Green Development",
+                  "Innovating for a Sustainable Future",
+                  "Customer-Centric Approach",
+                  "Building Stronger Communities"
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-4 p-5 rounded-2xl bg-steel border border-warm/5 hover:border-charge/30 transition-colors">
+                    <CheckCheck className="w-5 h-5 text-charge shrink-0 mt-0.5" />
+                    <span className="text-sm font-bold text-warm/80">{item}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
+
+          {/* Vision */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start relative">
+            <div className="hidden lg:block lg:col-span-5 relative">
+               <div className="sticky top-32 text-[15rem] font-black leading-none tracking-tighter -ml-12 relative">
+                 <div className="text-warm/5">02</div>
+                 <motion.div className="absolute inset-0 text-charge/20" style={{ opacity: dot2Opacity }}>02</motion.div>
+               </div>
+            </div>
+            <div className="lg:col-span-7 pt-8">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-12 h-12 rounded-full bg-charge/10 flex items-center justify-center text-charge">
+                   <Eye className="w-6 h-6" />
+                </div>
+                <h2 className="text-4xl lg:text-5xl font-black uppercase tracking-tight text-warm">Our Vision</h2>
+              </div>
+              <p className="text-warm/60 text-lg leading-relaxed mb-10">
+                At ENKO, our vision is to lead the infrastructure industry through innovation, sustainability, and excellence. We aim to set the benchmark for infrastructure standards globally, paving the way for a more sustainable and resilient future. By combining cutting-edge technology with eco-friendly practices, we strive to redefine the way infrastructure systems are built.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {[
+                  "Inspiring Modern Architecture",
+                  "Pioneering Sustainable Innovation",
+                  "Empowering Communities Through Innovation",
+                  "Leading the Future of Building Solutions"
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-4 p-5 rounded-2xl bg-steel border border-warm/5 hover:border-charge/30 transition-colors">
+                    <CheckCheck className="w-5 h-5 text-charge shrink-0 mt-0.5" />
+                    <span className="text-sm font-bold text-warm/80">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* History */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start relative">
+            <div className="hidden lg:block lg:col-span-5 relative">
+               <div className="sticky top-32 text-[15rem] font-black leading-none tracking-tighter -ml-12 relative">
+                 <div className="text-warm/5">03</div>
+                 <motion.div className="absolute inset-0 text-charge/20" style={{ opacity: dot3Opacity }}>03</motion.div>
+               </div>
+            </div>
+            <div className="lg:col-span-7 pt-8">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-12 h-12 rounded-full bg-charge/10 flex items-center justify-center text-charge">
+                   <History className="w-6 h-6" />
+                </div>
+                <h2 className="text-4xl lg:text-5xl font-black uppercase tracking-tight text-warm">Our History</h2>
+              </div>
+              <p className="text-warm/60 text-lg leading-relaxed mb-10">
+                Founded on a commitment to quality and innovation, ENKO began as a small team with a big vision. Over the years, we have grown into a trusted name in the EV infrastructure industry, delivering exceptional projects that stand the test of time. Our journey is marked by milestones of success, driven by passion and a dedication to excellence.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {[
+                  "Humble Beginnings",
+                  "Milestones and Achievements",
+                  "Building a Legacy of Trust",
+                  "Shaping the Future, Rooted in the Past"
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-4 p-5 rounded-2xl bg-steel border border-warm/5 hover:border-charge/30 transition-colors">
+                    <CheckCheck className="w-5 h-5 text-charge shrink-0 mt-0.5" />
+                    <span className="text-sm font-bold text-warm/80">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
+      {/* Hardware Solutions Section */}
+      <section className="container-shell py-24 lg:py-32 border-b border-warm/10 relative overflow-hidden">
+        {/* Background glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-charge/5 rounded-full blur-[120px] pointer-events-none"></div>
 
-      {/* Metrics Section */}
-      <section className="container-shell py-12 border-b border-warm/10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-warm/10">
-          {publicStats.map((metric, i) => (
-            <div key={i} className="flex flex-col items-center justify-center">
-              <h3 className="text-4xl lg:text-5xl font-black uppercase mb-2 text-warm">{metric.value}</h3>
-              <p className="text-xs lg:text-sm font-bold text-warm/60 uppercase tracking-widest">{metric.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-
-
-      {/* Mission Section */}
-      <section className="py-16 lg:py-24 overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-20">
-          <div className="relative h-[450px] lg:h-[550px] w-full pr-4 lg:pr-0">
-            <div className="absolute top-0 left-4 lg:left-12 w-[90%] lg:w-[85%] h-[85%] rounded-[2rem] lg:rounded-[3rem] overflow-hidden bg-steel">
-              <Image src="/images/white_electric_car.png" alt="Mission Layout 1" fill className="object-cover" />
-            </div>
-            <div className="absolute bottom-[5%] right-[5%] lg:right-0 w-[60%] h-[55%] rounded-[2rem] overflow-hidden border-[10px] border-forge shadow-lg bg-steel z-10">
-              <Image src="/images/metrics_public.png" alt="Mission Layout 2" fill className="object-cover" />
-            </div>
-          </div>
-          <div className="px-4 lg:pl-0 lg:pr-[max(1rem,calc(50vw-590px))]">
-            <h2 className="text-4xl lg:text-5xl font-semibold mb-6 tracking-tight text-warm">Our Mission</h2>
-            <p className="text-warm/75 text-sm lg:text-base leading-relaxed mb-8">
-              To provide exceptional infrastructure services that exceed client expectations through innovation, quality craftsmanship, and a commitment to sustainability. We aim to build lasting relationships and create spaces that enhance communities. Through precision, expertise, and a customer-centric approach, we strive to exceed expectations in every project.
-            </p>
-            <ul className="space-y-5">
-              {[
-                "Fostering Sustainable Growth and Green Development",
-                "Innovating for a Sustainable Future",
-                "Customer-Centric Approach",
-                "Building Stronger Communities"
-              ].map((item, i) => (
-                <li key={i} className="flex items-center text-sm lg:text-base font-bold text-warm/80">
-                  <CheckCheck className="w-5 h-5 text-charge mr-4 shrink-0" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Vision Section */}
-      <section className="py-16 lg:py-24 overflow-hidden bg-forge border-y border-warm/10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-20">
-          <div className="order-2 lg:order-1 px-4 lg:pr-0 lg:pl-[max(1rem,calc(50vw-590px))]">
-            <h2 className="text-4xl lg:text-5xl font-semibold mb-6 tracking-tight text-warm">Our Vision</h2>
-            <p className="text-warm/75 text-sm lg:text-base leading-relaxed mb-8">
-              At ENKO, our vision is to lead the infrastructure industry through innovation, sustainability, and excellence. We aim to set the benchmark for infrastructure standards globally, paving the way for a more sustainable and resilient future. By combining cutting-edge technology with eco-friendly practices, we strive to redefine the way infrastructure systems are built.
-            </p>
-            <ul className="space-y-5">
-              {[
-                "Inspiring Modern Architecture",
-                "Pioneering Sustainable Innovation",
-                "Empowering Communities Through Innovation",
-                "Leading the Future of Building Solutions"
-              ].map((item, i) => (
-                <li key={i} className="flex items-center text-sm lg:text-base font-bold text-warm/80">
-                  <CheckCheck className="w-5 h-5 text-charge mr-4 shrink-0" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="order-1 lg:order-2 relative h-[450px] lg:h-[550px] w-full pl-4 lg:pl-0">
-            <div className="absolute top-0 right-4 lg:right-12 w-[90%] lg:w-[85%] h-[85%] rounded-[2rem] lg:rounded-[3rem] overflow-hidden bg-steel">
-              <Image src="/images/metrics_public.png" alt="Vision Layout 1" fill className="object-cover" />
-            </div>
-            <div className="absolute bottom-[5%] left-[5%] lg:left-0 w-[60%] h-[55%] rounded-[2rem] overflow-hidden border-[10px] border-forge shadow-lg bg-steel z-10">
-              <Image src="/images/white_electric_car.png" alt="Vision Layout 2" fill className="object-cover" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* History Section */}
-      <section className="py-16 lg:py-24 overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-20">
-          <div className="relative h-[450px] lg:h-[550px] w-full pr-4 lg:pr-0">
-            <div className="absolute top-0 left-4 lg:left-12 w-[90%] lg:w-[85%] h-[85%] rounded-[2rem] lg:rounded-[3rem] overflow-hidden bg-steel">
-              <Image src="/images/metrics_public.png" alt="History Layout 1" fill className="object-cover" />
-            </div>
-            <div className="absolute bottom-[5%] right-[5%] lg:right-0 w-[60%] h-[55%] rounded-[2rem] overflow-hidden border-[10px] border-forge shadow-lg bg-steel z-10">
-              <Image src="/images/white_electric_car.png" alt="History Layout 2" fill className="object-cover" />
-            </div>
-          </div>
-          <div className="px-4 lg:pl-0 lg:pr-[max(1rem,calc(50vw-590px))]">
-            <h2 className="text-4xl lg:text-5xl font-semibold mb-6 tracking-tight text-warm">Our History</h2>
-            <p className="text-warm/75 text-sm lg:text-base leading-relaxed mb-8">
-              Founded on a commitment to quality and innovation, ENKO began as a small team with a big vision. Over the years, we have grown into a trusted name in the EV infrastructure industry, delivering exceptional projects that stand the test of time. Our journey is marked by milestones of success, driven by passion and a dedication to excellence.
-            </p>
-            <ul className="space-y-5">
-              {[
-                "Humble Beginnings",
-                "Milestones and Achievements",
-                "Building a Legacy of Trust",
-                "Shaping the Future, Rooted in the Past"
-              ].map((item, i) => (
-                <li key={i} className="flex items-center text-sm lg:text-base font-bold text-warm/80">
-                  <CheckCheck className="w-5 h-5 text-charge mr-4 shrink-0" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section className="container-shell py-16 lg:py-24">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-          <div className="max-w-2xl">
-            <h2 className="text-4xl lg:text-5xl font-black uppercase mb-4 text-warm">Crafting Excellence as a Team</h2>
-            <p className="text-warm/75 leading-relaxed">
-              Our success is built on the dedication and expertise of our team, who work together to bring innovative ideas to life and deliver outstanding results on every project. Together, we can achieve the quality.
-            </p>
-          </div>
-          <button className="industrial-button shrink-0 self-start md:self-auto bg-charge border-charge text-forge hover:bg-warm hover:text-forge hover:border-warm">
-            Explore All
-          </button>
+        {/* Top Heading */}
+        <div className="text-center mb-20 relative z-10">
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-charge mb-4">ENGINEERED FOR EXCELLENCE</p>
+          <h2 className="text-4xl md:text-5xl lg:text-7xl font-black text-warm uppercase tracking-tight">
+            Discover <span className="text-transparent bg-clip-text bg-gradient-to-r from-charge to-charge/60">Our Chargers</span>
+          </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            { name: "John Dodgart", role: "Working Coordinator", img: "/images/metrics_public.png" },
-            { name: "Romisa Nofel Zinh", role: "Working Coordinator", img: "/images/white_electric_car.png" },
-            { name: "Daniel Steward", role: "Working Coordinator", img: "/images/metrics_public.png" },
-            { name: "Jemy Wilson", role: "Working Coordinator", img: "/images/white_electric_car.png" }
-          ].map((member, i) => (
-            <div key={i} className="group">
-              <div className="relative h-80 rounded-2xl overflow-hidden mb-4 bg-steel">
-                <Image src={member.img} alt={member.name} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
-                <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 transform translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                  <div className="w-8 h-8 rounded-full bg-charge flex items-center justify-center text-forge text-xs font-bold cursor-pointer hover:bg-warm">in</div>
-                  <div className="w-8 h-8 rounded-full bg-warm flex items-center justify-center text-forge text-xs font-bold cursor-pointer hover:bg-charge">tw</div>
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-6xl mx-auto relative z-10">
+          {/* AC Card */}
+          <Link href="/products" className="group relative bg-steel border border-warm/10 rounded-3xl p-10 lg:p-14 overflow-hidden flex flex-col h-full hover:border-charge/40 transition-all duration-500 hover:shadow-2xl hover:shadow-charge/5">
+            {/* Massive Background Icon */}
+            <div className="absolute -bottom-10 -right-10 text-warm/5 group-hover:text-charge/5 transition-colors duration-500 transform group-hover:scale-110 group-hover:-rotate-12">
+              <Zap className="w-64 h-64" strokeWidth={1} />
+            </div>
+
+            <div className="relative z-10 flex-1 flex flex-col">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-charge/20 to-transparent flex items-center justify-center mb-8 border border-charge/20 group-hover:border-charge/40 transition-colors">
+                <Zap className="w-8 h-8 text-charge" />
+              </div>
+              <h4 className="text-2xl lg:text-3xl font-black uppercase tracking-tight text-warm mb-4">AC Chargers</h4>
+              <p className="text-warm/60 text-base leading-relaxed mb-10 max-w-sm">
+                Built for everyday charging — at homes, workplaces, apartments, and shared spaces. Compact in design, easy to install, and dependable in performance, seamlessly fitting into daily life.
+              </p>
+              <div className="mt-auto flex items-center gap-3 text-charge font-bold uppercase tracking-widest text-[10px] group-hover:text-warm transition-colors">
+                <span>View Full Catalog</span>
+                <div className="w-8 h-8 rounded-full border border-charge/30 flex items-center justify-center group-hover:border-warm/30 group-hover:bg-warm/5 transition-all">
+                  <ArrowRight className="w-4 h-4" />
                 </div>
               </div>
-              <h3 className="text-xl font-black uppercase mb-1 text-warm">{member.name}</h3>
-              <p className="text-sm font-bold text-warm/50 uppercase tracking-widest">{member.role}</p>
             </div>
-          ))}
+          </Link>
+
+          {/* DC Card */}
+          <Link href="/products" className="group relative bg-steel border border-warm/10 rounded-3xl p-10 lg:p-14 overflow-hidden flex flex-col h-full hover:border-charge/40 transition-all duration-500 hover:shadow-2xl hover:shadow-charge/5">
+            {/* Massive Background Icon */}
+            <div className="absolute -bottom-10 -right-10 text-warm/5 group-hover:text-charge/5 transition-colors duration-500 transform group-hover:scale-110 group-hover:rotate-12">
+              <BatteryCharging className="w-64 h-64" strokeWidth={1} />
+            </div>
+
+            <div className="relative z-10 flex-1 flex flex-col">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-charge/20 to-transparent flex items-center justify-center mb-8 border border-charge/20 group-hover:border-charge/40 transition-colors">
+                <BatteryCharging className="w-8 h-8 text-charge" />
+              </div>
+              <h4 className="text-2xl lg:text-3xl font-black uppercase tracking-tight text-warm mb-4">DC Chargers</h4>
+              <p className="text-warm/60 text-base leading-relaxed mb-10 max-w-sm">
+                Fast, powerful, and ready for scale. Built for highways, high-footfall locations, fleets, and commercial hubs — delivering quick turnaround and reliable performance where speed truly matters.
+              </p>
+              <div className="mt-auto flex items-center gap-3 text-charge font-bold uppercase tracking-widest text-[10px] group-hover:text-warm transition-colors">
+                <span>View Full Catalog</span>
+                <div className="w-8 h-8 rounded-full border border-charge/30 flex items-center justify-center group-hover:border-warm/30 group-hover:bg-warm/5 transition-all">
+                  <ArrowRight className="w-4 h-4" />
+                </div>
+              </div>
+            </div>
+          </Link>
         </div>
       </section>
+
+
 
       {/* Staggered Interactive Cards Section */}
       <section className="container-shell py-20 border-b border-warm/10">

@@ -9,12 +9,12 @@ export default function ContactPage() {
     <main>
       <SiteHeader />
       <PageHero
-        title="Contact"
-        description="Submit your network specifications and review common deployment questions."
-        kicker="Reach Out"
+        title="Request a Quote"
+        description="Share your deployment profile and receive an engineered hardware spec sheet with product fit, quantity guidance, and next-step pricing."
+        kicker="B2B Hardware Procurement"
       />
-      <FaqSection />
       <ProcurementSection />
+      <FaqSection />
       <SiteFooter />
     </main>
   );

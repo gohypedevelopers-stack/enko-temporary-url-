@@ -1,88 +1,92 @@
-import Image from 'next/image';
-import { partnerSegments } from '@/lib/site-data';
+import { Building2, Factory, Truck } from 'lucide-react';
 
 const features = [
   {
-    kicker: 'Segment 01',
-    title: `1. ${partnerSegments[0].title}`,
-    description: partnerSegments[0].copy,
-    cta: partnerSegments[0].cta,
-    image: '/partners/franchise.png',
-    bg: 'bg-forge'
+    title: 'CPOs',
+    stat: '31-36%',
+    proof: 'below PM E-DRIVE benchmark pricing',
+    pain: 'Capex pressure slows new public and highway deployments.',
+    solution: 'Lower capex on certified CCS2 deployments without compromising throughput.',
+    outcome: 'Protect project margin while scaling reliable DC fast charging sites.',
+    cta: 'Get CPO Pricing',
+    icon: Building2,
   },
   {
-    kicker: 'Segment 02',
-    title: `2. ${partnerSegments[1].title}`,
-    description: partnerSegments[1].copy,
-    cta: partnerSegments[1].cta,
-    image: '/partners/amenity.png',
-    bg: 'bg-steel'
+    title: 'OEMs',
+    stat: 'CCS2',
+    proof: 'domestic assembly ready for deployment',
+    pain: 'Vehicle launches need charging hardware that is market-ready.',
+    solution: 'Domestic CCS2 assembly supports fast integration and channel rollout.',
+    outcome: 'Move faster from pilot programs to deployable charging bundles.',
+    cta: 'Talk to Integration Team',
+    icon: Factory,
   },
   {
-    kicker: 'Segment 03',
-    title: `3. ${partnerSegments[2].title}`,
-    description: partnerSegments[2].copy,
-    cta: partnerSegments[2].cta,
-    image: '/partners/investment.png',
-    bg: 'bg-forge'
+    title: 'Fleet & Depot',
+    stat: '40%',
+    proof: 'reduction in vehicle turnaround time',
+    pain: 'Depot charging windows can hold vehicles back from route availability.',
+    solution: 'Cut depot charging downtime with multi-gun DC fast charging layouts.',
+    outcome: 'Improve asset utilization across logistics, bus, and delivery fleets.',
+    cta: 'Calculate Fleet ROI',
+    icon: Truck,
   }
 ];
 
 export function PartnerFeaturesSection() {
   return (
-    <section className="flex flex-col border-y border-warm/10 bg-forge">
-      {/* Section Header */}
-      <div className="min-h-[100dvh] flex flex-col justify-center container-shell py-24">
+    <section id="partner-options" className="scroll-mt-24 border-b border-warm/10 bg-steel">
+      <div className="container-shell py-16 lg:py-24">
         <div className="max-w-3xl">
-          <p className="label-kicker text-charge font-bold tracking-widest text-sm mb-3">
-            4.1 VALUE STRATEGY BY SEGMENT
-          </p>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase text-warm leading-[1.05]">
-            B2B PARTNERS & USE CASES.
+          <p className="label-kicker text-charge">Partner programs</p>
+          <h2 className="mt-4 text-3xl font-black uppercase leading-[1.05] text-warm sm:text-4xl lg:text-5xl">
+            Partner programs by business type.
           </h2>
         </div>
-      </div>
 
-      {features.map((feature, idx) => {
-        const isEven = idx % 2 === 1;
-        return (
-          <div key={idx} className={`${feature.bg} min-h-[100dvh] flex flex-col justify-center py-20 lg:py-32 border-b border-forge/10 last:border-0`}>
-            <div className={`container-shell flex flex-col ${isEven ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-12 lg:gap-24`}>
+        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+          {features.map((feature) => {
+            const Icon = feature.icon;
+            return (
+              <article key={feature.title} className="flex min-h-[520px] flex-col border border-warm/10 bg-forge p-6 transition-colors hover:border-charge/55">
+                <div className="flex items-center justify-between">
+                  <div className="flex h-12 w-12 items-center justify-center border border-charge/30 bg-charge/10 text-charge">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <div className="text-right">
+                    <p className="text-2xl font-black text-charge">{feature.stat}</p>
+                    <p className="max-w-36 text-[10px] font-bold uppercase leading-4 tracking-[0.12em] text-warm/45">{feature.proof}</p>
+                  </div>
+                </div>
 
-              {/* Text Content */}
-              <div className="flex-1 w-full text-center lg:text-left">
-                <p className="label-kicker text-charge mb-4">{feature.kicker}</p>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-black uppercase text-warm mb-6 leading-[1.1]">
-                  {feature.title}
-                </h2>
-                <p className="text-base md:text-lg text-warm/70 mb-10 leading-relaxed max-w-xl mx-auto lg:mx-0">
-                  {feature.description}
-                </p>
+                <h3 className="mt-8 text-2xl font-black uppercase text-warm">{feature.title}</h3>
+
+                <div className="mt-7 space-y-5 text-sm leading-6">
+                  <div>
+                    <p className="text-[10px] font-black uppercase tracking-[0.16em] text-warm/40">Pain point</p>
+                    <p className="mt-1 text-warm/70">{feature.pain}</p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-black uppercase tracking-[0.16em] text-warm/40">Solution</p>
+                    <p className="mt-1 text-warm/80">{feature.solution}</p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-black uppercase tracking-[0.16em] text-warm/40">Outcome</p>
+                    <p className="mt-1 text-warm/70">{feature.outcome}</p>
+                  </div>
+                </div>
+
                 <a
                   href="#request-form"
-                  className="industrial-button text-charge border-charge hover:bg-charge hover:text-forge"
+                  className="industrial-button mt-auto border-charge bg-charge text-forge hover:bg-warm hover:text-forge"
                 >
                   {feature.cta}
                 </a>
-              </div>
-
-              {/* Image */}
-              <div className="flex-1 w-full flex justify-center items-center">
-                <div className="relative w-full max-w-[500px] aspect-square rounded-full flex justify-center items-center">
-                  <div className="absolute inset-0 bg-charge/5 blur-3xl rounded-full" />
-                  <Image
-                    src={feature.image}
-                    alt={feature.title}
-                    fill
-                    className="object-contain relative z-10 drop-shadow-2xl"
-                  />
-                </div>
-              </div>
-
-            </div>
-          </div>
-        );
-      })}
+              </article>
+            );
+          })}
+        </div>
+      </div>
     </section>
   );
 }

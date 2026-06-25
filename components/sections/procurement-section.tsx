@@ -1,92 +1,151 @@
+'use client';
+
+import { useState } from 'react';
+import { CheckCircle2, Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
+import { whatsappUrl } from '@/lib/site-data';
+
 const businessRoles = ['Charge Point Operator (CPO)', 'Vehicle OEM', 'Fleet Logistics Provider', 'Institutional Real Estate Buyer'];
-const regions = ['Tamil Nadu', 'Kerala', 'Andhra Pradesh', 'Karnataka (Operational)', 'Telangana', 'Other Expansion State'];
+const regions = ['Tamil Nadu', 'Kerala', 'Andhra Pradesh', 'Karnataka (Operational HQ)', 'Telangana (Expansion)', 'Other Expansion State'];
 const series = ['FLOW AC Series', 'STORM DC Series', 'BLAZE ULTRA Series'];
 
 export function ProcurementSection() {
+  const [submitted, setSubmitted] = useState(false);
+
   return (
     <section id="procurement" className="grid-paper border-b border-warm/10 bg-forge">
       <div className="container-shell py-16 lg:py-24">
-        <div className="max-w-4xl mx-auto mb-10 text-left">
-          <p className="label-kicker text-charge">5.2 B2B Procurement Intake Form Fields</p>
-          <h2 className="mt-4 text-3xl font-black uppercase text-warm leading-[1.05] md:text-4xl md:leading-[1.1]">
-            ENKO CORE SYSTEM HARDWARE CONFIGURATOR
-          </h2>
-          <p className="mt-4 text-sm lg:text-base leading-7 text-warm/80 italic">
-            Submit your network specifications to receive an engineered pricing spec sheet.
-          </p>
-        </div>
-        <form className="border border-warm/15 bg-steel p-8 md:p-12 shadow-soft max-w-4xl mx-auto">
-          {/* 1. Contact Metrics */}
-          <div className="mb-12">
-            <h3 className="text-xl font-black uppercase text-charge border-b border-warm/10 pb-4 mb-6">1. Contact Metrics:</h3>
-            <div className="grid gap-6 md:grid-cols-2">
-              {['Full Name', 'Corporate Email Address', 'Contact Phone Number', 'Company Entity Name'].map((field) => (
-                <label key={field} className="block">
-                  <span className="label-kicker text-warm/50">{field}</span>
-                  <input className="mt-2 h-12 w-full border border-warm/20 bg-forge/30 px-3 text-sm text-warm outline-none focus:border-charge transition-colors" />
-                </label>
-              ))}
+        <div className="grid gap-10 lg:grid-cols-[0.38fr_0.62fr]">
+          <aside className="space-y-6">
+            <div>
+              <p className="label-kicker text-charge">Quote Intake</p>
+              <h2 className="mt-4 text-3xl font-black uppercase leading-[1.05] text-warm md:text-4xl">
+                Hardware configurator for commercial EV charging projects.
+              </h2>
+              <p className="mt-5 text-sm leading-7 text-warm/70">
+                Submit your site and product requirements. You&apos;ll receive your engineered spec sheet within 24 business hours.
+              </p>
             </div>
-          </div>
 
-          {/* 2. Operational Parameters */}
-          <div className="mb-12">
-            <h3 className="text-xl font-black uppercase text-charge border-b border-warm/10 pb-4 mb-6">2. Operational Parameters:</h3>
-            <div className="grid gap-6 md:grid-cols-2">
-              <label className="block">
-                <span className="label-kicker text-warm/50">Primary Business Role</span>
-                <select className="mt-2 h-12 w-full border border-warm/20 bg-forge/30 px-3 text-sm text-warm outline-none focus:border-charge transition-colors">
-                  {businessRoles.map((role) => (
-                    <option key={role}>{role}</option>
-                  ))}
-                </select>
-              </label>
-              <label className="block">
-                <span className="label-kicker text-warm/50">Target Region of Deployment</span>
-                <select className="mt-2 h-12 w-full border border-warm/20 bg-forge/30 px-3 text-sm text-warm outline-none focus:border-charge transition-colors">
-                  {regions.map((region) => (
-                    <option key={region}>{region}</option>
-                  ))}
-                </select>
-              </label>
+            <div className="border border-charge/25 bg-charge/10 p-5">
+              <div className="flex gap-3">
+                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-charge" />
+                <div>
+                  <p className="text-sm font-black uppercase tracking-[0.14em] text-warm">What happens next</p>
+                  <p className="mt-2 text-sm leading-6 text-warm/70">
+                    ENKO reviews your power band, region, quantity, and business role, then shares a recommended charger mix and procurement response.
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
 
-          {/* 3. Hardware Profile Requirement */}
-          <div className="mb-12">
-            <h3 className="text-xl font-black uppercase text-charge border-b border-warm/10 pb-4 mb-6">3. Hardware Profile Requirement:</h3>
-            <div className="mb-6">
-              <span className="label-kicker text-warm/50">Selected Product Series</span>
-              <div className="mt-3 grid gap-3 md:grid-cols-3">
-                {series.map((item) => (
-                  <label key={item} className="flex items-center gap-3 border border-warm/20 bg-forge/30 p-3 text-sm font-bold cursor-pointer transition-colors hover:bg-forge text-warm">
-                    <input type="checkbox" className="h-4 w-4 accent-charge" />
-                    {item}
+            <div className="border border-warm/10 bg-steel/60 p-5">
+              <p className="label-kicker text-charge">Direct Contact</p>
+              <ul className="mt-5 space-y-4 text-sm text-warm/70">
+                <li className="flex gap-3">
+                  <Phone className="h-4 w-4 text-charge" />
+                  +91 98765 43210
+                </li>
+                <li className="flex gap-3">
+                  <Mail className="h-4 w-4 text-charge" />
+                  contact@enkoenergy.in
+                </li>
+                <li className="flex gap-3">
+                  <MapPin className="h-4 w-4 text-charge" />
+                  Bengaluru, Karnataka
+                </li>
+              </ul>
+            </div>
+
+            <div className="border border-warm/10 bg-forge p-5">
+              <p className="text-[10px] font-black uppercase tracking-[0.16em] text-warm/45">Operational regions</p>
+              <p className="mt-3 text-sm leading-6 text-warm/70">
+                Tamil Nadu, Kerala, Andhra Pradesh, and Karnataka are active service regions. Telangana and other states are handled as expansion enquiries.
+              </p>
+            </div>
+          </aside>
+
+          <form
+            className="border border-warm/15 bg-steel p-6 shadow-soft md:p-10"
+            onSubmit={(event) => {
+              event.preventDefault();
+              setSubmitted(true);
+            }}
+          >
+            <div className="mb-10">
+              <h3 className="border-b border-warm/10 pb-4 text-xl font-black uppercase text-charge">Contact details</h3>
+              <div className="mt-6 grid gap-6 md:grid-cols-2">
+                {['Full Name', 'Corporate Email Address', 'Contact Phone Number', 'Company Entity Name'].map((field) => (
+                  <label key={field} className="block">
+                    <span className="label-kicker text-warm/50">{field}</span>
+                    <input className="mt-2 h-12 w-full border border-warm/20 bg-forge/30 px-3 text-sm text-warm outline-none transition-colors focus:border-charge" required />
                   </label>
                 ))}
               </div>
             </div>
-            <label className="block max-w-sm">
-              <span className="label-kicker text-warm/50">Estimated Unit Quantity</span>
-              <input className="mt-2 h-12 w-full border border-warm/20 bg-forge/30 px-3 text-sm text-warm outline-none focus:border-charge transition-colors" type="number" />
-            </label>
-          </div>
 
-          {/* Submission Triggers (No header) */}
-          <div className="pt-4 border-t border-warm/10">
-            <div className="flex flex-col gap-4 sm:flex-row">
-              <button className="industrial-button bg-warm text-forge w-full sm:w-auto hover:bg-white transition-colors" type="button">
-                SUBMIT PROCUREMENT SPECIFICATION
-              </button>
-              <button className="industrial-button bg-charge text-forge w-full sm:w-auto hover:bg-[#d89117] transition-colors" type="button">
-                CONNECT DIRECT VIA WHATSAPP
-              </button>
+            <div className="mb-10">
+              <h3 className="border-b border-warm/10 pb-4 text-xl font-black uppercase text-charge">Deployment profile</h3>
+              <div className="mt-6 grid gap-6 md:grid-cols-2">
+                <label className="block">
+                  <span className="label-kicker text-warm/50">Primary Business Role</span>
+                  <select className="mt-2 h-12 w-full border border-warm/20 bg-forge/30 px-3 text-sm text-warm outline-none transition-colors focus:border-charge">
+                    {businessRoles.map((role) => (
+                      <option key={role}>{role}</option>
+                    ))}
+                  </select>
+                </label>
+                <label className="block">
+                  <span className="label-kicker text-warm/50">Target Region of Deployment</span>
+                  <select className="mt-2 h-12 w-full border border-warm/20 bg-forge/30 px-3 text-sm text-warm outline-none transition-colors focus:border-charge">
+                    {regions.map((region) => (
+                      <option key={region}>{region}</option>
+                    ))}
+                  </select>
+                </label>
+              </div>
             </div>
-            <p className="mt-4 text-sm text-warm/60">
-              You'll receive your engineered spec sheet within 24 business hours.
-            </p>
-          </div>
-        </form>
+
+            <div className="mb-10">
+              <h3 className="border-b border-warm/10 pb-4 text-xl font-black uppercase text-charge">Hardware requirement</h3>
+              <div className="mt-6">
+                <span className="label-kicker text-warm/50">Selected Product Series</span>
+                <div className="mt-3 grid gap-3 md:grid-cols-3">
+                  {series.map((item) => (
+                    <label key={item} className="flex cursor-pointer items-center gap-3 border border-warm/20 bg-forge/30 p-3 text-sm font-bold text-warm transition-colors hover:bg-forge">
+                      <input type="checkbox" className="h-4 w-4 accent-charge" />
+                      {item}
+                    </label>
+                  ))}
+                </div>
+              </div>
+              <label className="mt-6 block max-w-sm">
+                <span className="label-kicker text-warm/50">Estimated Unit Quantity</span>
+                <input className="mt-2 h-12 w-full border border-warm/20 bg-forge/30 px-3 text-sm text-warm outline-none transition-colors focus:border-charge" type="number" min="1" />
+              </label>
+            </div>
+
+            {submitted && (
+              <div className="mb-6 border border-charge/35 bg-charge/10 p-4 text-sm leading-6 text-warm">
+                Request received. You&apos;ll receive your engineered spec sheet within 24 business hours.
+              </div>
+            )}
+
+            <div className="border-t border-warm/10 pt-4">
+              <div className="flex flex-col gap-4 sm:flex-row">
+              <button className="industrial-button w-full bg-warm text-forge transition-colors hover:bg-white sm:w-auto" type="submit">
+                Submit Specification
+              </button>
+                <a className="industrial-button w-full bg-charge text-forge transition-colors hover:bg-[#d89117] sm:w-auto" href={whatsappUrl}>
+                  <MessageCircle className="mr-2 h-4 w-4" />
+                  WhatsApp ENKO
+                </a>
+              </div>
+              <p className="mt-4 text-sm text-warm/60">
+                You&apos;ll receive your engineered spec sheet within 24 business hours.
+              </p>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
   );
