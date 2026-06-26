@@ -28,7 +28,7 @@ export function HeroSection() {
       {/* Full Screen Hero Video Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <video
-          src="/video_202606241810%20(1).mp4"
+          src="/Enko .mp4"
           className="h-full w-full object-cover object-center"
           autoPlay
           muted
