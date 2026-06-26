@@ -77,7 +77,7 @@ export function PartnerFeaturesSection() {
                 </div>
 
                 <a
-                  href="#request-form"
+                  href="#procurement"
                   className="industrial-button mt-auto border-charge bg-charge text-forge hover:bg-warm hover:text-forge"
                 >
                   {feature.cta}

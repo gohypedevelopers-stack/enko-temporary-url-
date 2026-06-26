@@ -88,7 +88,7 @@ export function WhyPartnerSection() {
 
         <div className="mt-8 flex justify-start">
           <a
-            href="#request-form"
+            href="#procurement"
             className="industrial-button border-warm bg-warm text-forge hover:border-charge hover:bg-charge"
           >
             Share Your Deployment Specs

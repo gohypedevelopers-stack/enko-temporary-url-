@@ -34,14 +34,14 @@ export function PartnerHeroSection() {
         {/* Buttons */}
         <div className="flex flex-col gap-4 sm:flex-row items-center justify-center">
           <a
-            href="#request-form"
+            href="#procurement"
             className="inline-flex items-center justify-center gap-2 rounded-full border border-charge bg-charge px-10 py-4 text-[11px] font-black uppercase tracking-widest text-forge transition-colors hover:bg-warm hover:text-forge"
           >
             <FileText className="h-4 w-4" />
             Request Quote
           </a>
           <a
-            href="#product-range"
+            href="/products"
             className="inline-flex items-center justify-center gap-2 rounded-full border border-warm/20 bg-steel/50 backdrop-blur-md px-10 py-4 text-[11px] font-black uppercase tracking-widest text-warm transition-colors hover:border-charge hover:text-charge"
           >
             View Products

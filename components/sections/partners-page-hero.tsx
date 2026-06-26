@@ -27,7 +27,7 @@ export function PartnersPageHero() {
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <a
-              href="#request-form"
+              href="#procurement"
               className="industrial-button border-charge bg-charge text-forge hover:bg-warm hover:text-forge"
             >
               Talk to an Expert

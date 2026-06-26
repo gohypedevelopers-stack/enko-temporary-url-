@@ -24,7 +24,7 @@ export function PartnerFaqSection() {
             Contact us if you still have any questions to start your experience with Enko.
           </p>
           <a
-            href="#request-form"
+            href="#procurement"
             className="industrial-button border-charge bg-charge text-forge hover:bg-warm hover:text-forge hover:border-warm"
           >
             Contact Support
