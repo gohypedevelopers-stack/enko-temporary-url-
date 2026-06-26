@@ -118,7 +118,7 @@ export function TestimonialSlider({ reviews, className }: TestimonialSliderProps
                   <img
                     src={review.thumbnailSrc}
                     alt={review.name}
-                    className="h-full w-full object-contain p-2"
+                    className="h-full w-full object-contain px-2 pb-4 pt-2"
                   />
                 </button>
               );
@@ -138,7 +138,7 @@ export function TestimonialSlider({ reviews, className }: TestimonialSliderProps
               animate="center"
               exit="exit"
               transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-              className="absolute inset-0 h-full w-full object-contain p-8 drop-shadow-[0_0_36px_rgba(232,160,32,0.18)]"
+              className="absolute inset-0 h-full w-full object-contain px-8 pb-16 pt-8 drop-shadow-[0_0_36px_rgba(232,160,32,0.18)] lg:pb-20"
             />
           </AnimatePresence>
         </div>

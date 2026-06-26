@@ -12,7 +12,7 @@ function RangeCard({ card, index }: { card: typeof rangeCards[0], index: number 
           {card.tag}
         </p>
         <div className="h-64 rounded-sm relative overflow-hidden flex items-center justify-center p-2">
-          <img src={card.image} alt={card.name} className="max-w-full max-h-full object-contain p-4 opacity-95 group-hover:scale-105 transition-transform duration-700" />
+          <img src={card.image} alt={card.name} className="max-h-full max-w-full object-contain px-4 pb-10 pt-4 opacity-95 transition-transform duration-700 group-hover:scale-105" />
         </div>
         <h3 className="mt-6 text-2xl font-black uppercase text-warm">{card.name}</h3>
 

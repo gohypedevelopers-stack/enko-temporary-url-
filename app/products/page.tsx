@@ -20,7 +20,7 @@ const flowProducts = [
     num: 2,
     name: 'ENKO Flow 11',
     tag: 'SYSTEM_NODE_02 // AC_SERIES',
-    image: '/products/11kw-22kw.png',
+    image: '/products/7.4kw (2).png',
     powerOutput: '11kW AC Commercial',
     primaryApplication: 'Corporate office campuses, long-stay commercial public parking spaces.',
   },
@@ -143,12 +143,12 @@ type ProductCardProps = {
 function ProductCard({ product, isOpen, onToggle }: ProductCardProps) {
   return (
     <div className="bg-forge border border-warm/10 rounded-2xl overflow-hidden hover:border-charge/40 transition-all duration-300 group flex flex-col">
-      <div className="relative h-80 flex items-center justify-center p-6 flex-shrink-0" style={{ background: 'radial-gradient(ellipse at 50% 40%, #2e2e2e 0%, #191919 55%, #0a0a0a 100%)' }}>
+      <div className="relative h-56 xl:h-60 flex items-center justify-center p-6 flex-shrink-0" style={{ background: 'radial-gradient(ellipse at 50% 40%, #2e2e2e 0%, #191919 55%, #0a0a0a 100%)' }}>
         <p className="absolute top-3 left-3 text-[7px] font-bold uppercase tracking-[0.2em] text-charge/70">[ {product.tag} ]</p>
-        <Image src={product.image} alt={product.name} fill className="object-contain p-4 group-hover:scale-105 transition-transform duration-500" />
+        <Image src={product.image} alt={product.name} fill className="object-contain px-6 pb-12 pt-6 group-hover:scale-105 transition-transform duration-500" />
       </div>
-      <div className="p-5 flex flex-col flex-grow">
-        <h4 className="text-base font-black uppercase text-warm mb-4">{product.num}. {product.name}</h4>
+      <div className="p-4 flex flex-col flex-grow">
+        <h4 className="text-sm font-black uppercase text-warm mb-3 xl:text-base">{product.num}. {product.name}</h4>
         <AnimatePresence initial={false}>
           {isOpen && (
             <motion.div
@@ -158,19 +158,19 @@ function ProductCard({ product, isOpen, onToggle }: ProductCardProps) {
               transition={{ duration: 0.3, ease: "easeInOut" }}
               className="overflow-hidden"
             >
-              <div className="mb-6 border-t border-warm/10 pt-5 space-y-5">
+              <div className="mb-5 border-t border-warm/10 pt-4 space-y-4">
                 <div className="flex gap-2">
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-charge" />
                   <div>
                     <p className="mb-1 text-[10px] font-black uppercase tracking-[0.22em] text-warm/50">Power Output</p>
-                    <p className="text-sm leading-relaxed text-warm/80">{product.powerOutput}</p>
+                    <p className="text-xs leading-relaxed text-warm/80 xl:text-sm">{product.powerOutput}</p>
                   </div>
                 </div>
                 <div className="flex gap-2">
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-charge" />
                   <div>
                     <p className="mb-1 text-[10px] font-black uppercase tracking-[0.22em] text-warm/50">Primary Application</p>
-                    <p className="text-sm leading-relaxed text-warm/80">{product.primaryApplication}</p>
+                    <p className="text-xs leading-relaxed text-warm/80 xl:text-sm">{product.primaryApplication}</p>
                   </div>
                 </div>
                 {product.financialAdvantage && (
@@ -178,7 +178,7 @@ function ProductCard({ product, isOpen, onToggle }: ProductCardProps) {
                     <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-charge" />
                     <div>
                       <p className="mb-1 text-[10px] font-black uppercase tracking-[0.22em] text-warm/50">Financial Advantage</p>
-                      <p className="text-sm leading-relaxed text-warm/80">{product.financialAdvantage}</p>
+                      <p className="text-xs leading-relaxed text-warm/80 xl:text-sm">{product.financialAdvantage}</p>
                     </div>
                   </div>
                 )}
@@ -224,7 +224,7 @@ export default function ProductsPage() {
       <SiteHeader />
 
       {/* Hero Section */}
-      <section className="relative min-h-[100dvh] flex items-center pt-24 overflow-hidden border-b border-warm/10">
+      <section className="relative min-h-[100dvh] flex items-center pt-24 overflow-hidden border-b border-warm/10 lg:h-[100dvh]">
         <div className="absolute inset-0 pointer-events-none z-0">
           <div className="absolute inset-0 bg-forge"></div>
           {/* subtle grid */}
@@ -319,15 +319,15 @@ export default function ProductsPage() {
       </section>
 
       {/* Product Catalog Section */}
-      <section className="py-20 bg-steel border-b border-warm/10">
+      <section className="min-h-[100dvh] bg-steel border-b border-warm/10 py-16 lg:flex lg:h-[100dvh] lg:items-center lg:overflow-hidden lg:py-10">
         <div className="container-shell">
 
           {/* Header */}
-          <div className="mb-16">
+          <div className="mb-10 xl:mb-12">
             <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-charge mb-3">
               [ HARDWARE SYSTEMS COMPONENT ARCHITECTURE ]
             </p>
-            <h2 className="text-4xl lg:text-5xl font-black uppercase text-warm mb-4 leading-tight">
+            <h2 className="text-3xl lg:text-5xl font-black uppercase text-warm mb-4 leading-tight">
               Full-Spectrum CCS2<br />Charging Assets.
             </h2>
             <p className="text-warm/55 text-sm max-w-xl">
@@ -336,17 +336,17 @@ export default function ProductsPage() {
           </div>
 
           {/* ── Series 1: FLOW AC ── */}
-          <div className="mb-16">
+          <div>
             <div className="flex items-center gap-4 mb-3">
               <h3 className="text-lg font-black uppercase tracking-widest text-warm">
                 ENKO Flow Series <span className="text-charge">(AC Commercial Charging)</span>
               </h3>
             </div>
             <div className="h-px bg-warm/15 mb-6" />
-            <p className="text-xs text-warm/55 mb-8">
+            <p className="text-xs text-warm/55 mb-6">
               <span className="font-bold text-warm/80">Common Specifications:</span> OCPP 2.0.1 compliant, single/three-phase electrical compatibility, Wall-box or Pedestal mount ready.
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 items-start xl:gap-6">
               {flowProducts.map((product) => (
                 <ProductCard
                   key={product.num}
@@ -358,18 +358,23 @@ export default function ProductsPage() {
             </div>
           </div>
 
+        </div>
+      </section>
+
+      <section className="min-h-[100dvh] bg-forge border-b border-warm/10 py-16 lg:flex lg:h-[100dvh] lg:items-center lg:overflow-hidden lg:py-10">
+        <div className="container-shell">
           {/* ── Series 2: STORM DC ── */}
-          <div className="mb-16">
+          <div>
             <div className="flex items-center gap-4 mb-3">
               <h3 className="text-lg font-black uppercase tracking-widest text-warm">
                 ENKO Storm Series <span className="text-charge">(DC Fast Charging)</span>
               </h3>
             </div>
             <div className="h-px bg-warm/15 mb-6" />
-            <p className="text-xs text-warm/55 mb-8">
+            <p className="text-xs text-warm/55 mb-6">
               <span className="font-bold text-warm/80">Common Specifications:</span> Dual CCS2 guns, IP54 industrial protection, smart power-sharing modules, high-visibility user UI screens.
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 items-start xl:gap-6">
               {stormProducts.map((product) => (
                 <ProductCard
                   key={product.num}
@@ -381,6 +386,11 @@ export default function ProductsPage() {
             </div>
           </div>
 
+        </div>
+      </section>
+
+      <section className="min-h-[100dvh] bg-steel border-b border-warm/10 py-16 lg:flex lg:h-[100dvh] lg:items-center lg:overflow-hidden lg:py-10">
+        <div className="container-shell">
           {/* ── Series 3: BLAZE ULTRA ── */}
           <div>
             <div className="flex items-center gap-4 mb-3">
@@ -389,10 +399,10 @@ export default function ProductsPage() {
               </h3>
             </div>
             <div className="h-px bg-warm/15 mb-6" />
-            <p className="text-xs text-warm/55 mb-8">
+            <p className="text-xs text-warm/55 mb-6">
               <span className="font-bold text-warm/80">Common Specifications:</span> Liquid-cooled dual guns, 240kW+ modular output, dynamic power sharing, heavy-duty transport compliant.
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 items-start xl:gap-6">
               {blazeProducts.map((product) => (
                 <ProductCard
                   key={product.num}
@@ -409,16 +419,16 @@ export default function ProductsPage() {
 
 
       {/* B2B Deployment Flow Section */}
-      <section className="py-24 bg-forge relative border-b border-warm/10">
-        <div className="container-shell text-center mb-16">
+      <section className="min-h-[100dvh] bg-forge relative border-b border-warm/10 py-16 lg:flex lg:h-[100dvh] lg:items-center lg:overflow-hidden lg:py-10">
+        <div className="container-shell">
+        <div className="text-center mb-10 xl:mb-12">
           <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-charge mb-4">
             SEAMLESS INTEGRATION
           </p>
-          <h2 className="text-4xl lg:text-5xl font-black uppercase mb-4 text-warm">B2B Deployment Flow</h2>
+          <h2 className="text-3xl lg:text-5xl font-black uppercase mb-4 text-warm">B2B Deployment Flow</h2>
         </div>
 
-        <div className="container-shell">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 xl:gap-8 relative">
             {/* Desktop Connector Line */}
             <div className="hidden md:block absolute top-[110px] left-[12.5%] right-[12.5%] h-[2px] bg-warm/10 z-0">
               <div className="absolute top-0 left-0 h-full bg-charge w-0 animate-[fillLine_3s_ease-out_forwards]"></div>
@@ -451,7 +461,7 @@ export default function ProductsPage() {
               }
             ].map((item, i) => (
               <div key={i} className="group flex flex-col text-center relative z-10">
-                <div className="relative h-48 md:h-56 w-full rounded-3xl overflow-hidden mb-8 border border-warm/10 group-hover:border-charge/50 transition-colors duration-300">
+                <div className="relative h-44 md:h-48 xl:h-52 w-full rounded-3xl overflow-hidden mb-6 border border-warm/10 group-hover:border-charge/50 transition-colors duration-300">
                   <div className="absolute inset-0 bg-forge/80 group-hover:bg-forge/60 transition-colors z-10 flex items-center justify-center">
                     <span className="text-6xl font-black text-warm/20 group-hover:text-charge/40 transition-colors duration-500 transform group-hover:scale-110">{item.step}</span>
                   </div>
@@ -460,8 +470,8 @@ export default function ProductsPage() {
                 <div className="bg-steel absolute top-[-16px] left-1/2 -translate-x-1/2 w-8 h-8 rounded-full border-4 border-forge flex items-center justify-center z-20">
                   <div className="w-2 h-2 rounded-full bg-charge group-hover:animate-ping"></div>
                 </div>
-                <h3 className="text-xl font-bold uppercase tracking-widest mb-3 text-warm">{item.title}</h3>
-                <p className="text-sm text-warm/60 leading-relaxed max-w-xs mx-auto">{item.desc}</p>
+                <h3 className="text-lg xl:text-xl font-bold uppercase tracking-widest mb-3 text-warm">{item.title}</h3>
+                <p className="text-xs xl:text-sm text-warm/60 leading-relaxed max-w-xs mx-auto">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -469,10 +479,10 @@ export default function ProductsPage() {
       </section>
 
       {/* Compatibility Chart Section */}
-      <section className="py-16 bg-steel border-b border-warm/10">
+      <section className="min-h-[100dvh] bg-steel border-b border-warm/10 py-16 lg:flex lg:h-[100dvh] lg:items-center lg:overflow-hidden lg:py-10">
         <div className="container-shell max-w-4xl mx-auto">
-          <div className="text-center mb-10">
-            <h2 className="text-2xl font-black uppercase mb-2 text-warm">Connector Compatibility</h2>
+          <div className="text-center mb-8 xl:mb-10">
+            <h2 className="text-2xl lg:text-4xl font-black uppercase mb-2 text-warm">Connector Compatibility</h2>
             <p className="text-warm/60 text-sm">Universal standard charging for every major EV fleet.</p>
           </div>
           <div className="overflow-x-auto rounded-2xl border border-warm/10 bg-forge">

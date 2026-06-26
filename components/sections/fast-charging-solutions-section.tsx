@@ -50,7 +50,7 @@ export function FastChargingSolutionsSection() {
             {products.slice(0, 2).map((product) => (
               <article key={product.name} className="grid gap-6 border border-warm/10 bg-steel/45 p-6 md:grid-cols-[0.9fr_1.1fr]">
                 <div className="flex min-h-64 items-center justify-center bg-forge/60">
-                  <img src={product.image} alt={product.name} className="h-60 w-auto object-contain p-4" />
+                  <img src={product.image} alt={product.name} className="h-60 w-auto object-contain px-4 pb-10 pt-4" />
                 </div>
                 <div className="flex flex-col justify-center">
                   <p className="text-[10px] font-black uppercase tracking-[0.18em] text-warm/45">{product.category}</p>
@@ -69,7 +69,7 @@ export function FastChargingSolutionsSection() {
           <div className="grid gap-6 lg:grid-cols-[0.62fr_0.38fr]">
             <article className="grid gap-6 border border-warm/10 bg-steel/45 p-6 md:grid-cols-[0.75fr_1.25fr]">
               <div className="flex min-h-56 items-center justify-center bg-forge/60">
-                <img src={products[2].image} alt={products[2].name} className="h-52 w-auto object-contain p-4" />
+                <img src={products[2].image} alt={products[2].name} className="h-52 w-auto object-contain px-4 pb-10 pt-4" />
               </div>
               <div className="flex flex-col justify-center">
                 <p className="text-[10px] font-black uppercase tracking-[0.18em] text-warm/45">{products[2].category}</p>
