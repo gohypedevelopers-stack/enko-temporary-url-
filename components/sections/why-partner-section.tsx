@@ -26,7 +26,7 @@ export function WhyPartnerSection() {
   ];
 
   return (
-    <section className="relative overflow-hidden border-b border-warm/10 bg-[#0a0a0a] py-16 lg:py-24">
+    <section className="relative overflow-hidden border-b border-warm/10 bg-[#0a0a0a] py-16 lg:flex lg:h-[100dvh] lg:items-center lg:py-8">
       <div className="container-shell relative z-10">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
@@ -41,16 +41,16 @@ export function WhyPartnerSection() {
           </div>
         </div>
 
-        <div className="mt-10 grid border border-warm/10 bg-steel/40 md:grid-cols-3">
+        <div className="mt-8 grid border border-warm/10 bg-steel/40 md:grid-cols-3">
           {metrics.map((metric) => (
-            <div key={metric.label} className="border-b border-warm/10 p-6 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0">
-              <p className="text-4xl font-black text-charge">{metric.value}</p>
+            <div key={metric.label} className="border-b border-warm/10 p-5 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0">
+              <p className="text-3xl font-black text-charge lg:text-4xl">{metric.value}</p>
               <p className="mt-2 text-[10px] font-black uppercase tracking-[0.16em] text-warm/45">{metric.label}</p>
             </div>
           ))}
         </div>
 
-        <div className="mt-8 flex flex-wrap gap-3">
+        <div className="mt-6 flex flex-wrap gap-3">
           {['Logistics', 'Highway CPO', 'Fleet Depots', 'Commercial Real Estate', 'OEM Programs'].map((tag) => (
             <span key={tag} className="border border-warm/10 bg-forge px-4 py-2 text-[10px] font-black uppercase tracking-[0.14em] text-warm/55">
               {tag}
@@ -58,16 +58,16 @@ export function WhyPartnerSection() {
           ))}
         </div>
 
-        <div className="mt-8 grid gap-6 lg:grid-cols-2">
+        <div className="mt-6 grid gap-5 lg:grid-cols-2">
           {cases.map((item) => {
             const Icon = item.icon;
             return (
-              <article key={item.type} className="border border-warm/10 bg-steel/35 p-6 lg:p-8">
+              <article key={item.type} className="border border-warm/10 bg-steel/35 p-6">
                 <div className="flex items-center justify-between gap-4">
                   <p className="label-kicker text-charge">{item.type}</p>
                   <Icon className="h-5 w-5 text-charge" />
                 </div>
-                <dl className="mt-8 grid gap-5 text-sm">
+                <dl className="mt-6 grid gap-4 text-sm">
                   <div className="spec-line">
                     <dt className="text-warm/45">Deployment Size</dt>
                     <dd className="max-w-xs text-right font-bold text-warm">{item.size}</dd>
@@ -86,7 +86,7 @@ export function WhyPartnerSection() {
           })}
         </div>
 
-        <div className="mt-10 flex justify-start">
+        <div className="mt-8 flex justify-start">
           <a
             href="#request-form"
             className="industrial-button border-warm bg-warm text-forge hover:border-charge hover:bg-charge"

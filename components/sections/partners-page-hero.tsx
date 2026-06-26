@@ -3,16 +3,16 @@ import { ArrowRight } from 'lucide-react';
 
 export function PartnersPageHero() {
   return (
-    <section className="relative min-h-[100dvh] flex flex-col justify-center overflow-hidden border-b border-warm/10 bg-forge">
+    <section className="relative min-h-[100dvh] flex flex-col justify-center overflow-hidden border-b border-warm/10 bg-forge lg:h-[100dvh]">
       <Image
         src="/partners/hero_bg.png"
         alt="ENKO partnership infrastructure"
         fill
-        className="object-cover object-center opacity-45"
+        className="object-cover object-center opacity-65"
         priority
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-forge via-forge/80 to-forge/20" />
-      <div className="absolute inset-0 bg-gradient-to-t from-forge via-transparent to-forge/30" />
+      <div className="absolute inset-0 bg-gradient-to-r from-forge/95 via-forge/62 to-forge/10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-forge/75 via-transparent to-forge/15" />
 
       <div className="container-shell relative z-10 flex min-h-[100dvh] items-center pt-24 pb-16">
         <div className="max-w-3xl">

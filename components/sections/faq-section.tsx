@@ -19,38 +19,38 @@ export function FaqSection() {
   ];
 
   return (
-    <section className="min-h-[100dvh] flex flex-col justify-center bg-steel py-24 border-b border-warm/10">
+    <section className="min-h-[100dvh] flex flex-col justify-center bg-steel py-16 border-b border-warm/10 lg:h-[100dvh] lg:overflow-hidden lg:py-8">
       <div className="max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start mb-12 lg:mb-10">
 
           {/* Left Column: Header */}
           <div className="lg:col-span-4 flex flex-col space-y-6 lg:sticky lg:top-32">
             <Reveal>
-              <h2 className="text-5xl md:text-6xl lg:text-[72px] font-black text-warm leading-[1.05] tracking-tight mb-6">
+              <h2 className="text-4xl md:text-5xl lg:text-[56px] font-black text-warm leading-[1.05] tracking-tight mb-5">
                 <br />Frequently Asked Questions
               </h2>
-              <p className="text-lg lg:text-xl text-warm/70 leading-relaxed max-w-sm pr-4">
+              <p className="text-base lg:text-lg text-warm/70 leading-relaxed max-w-sm pr-4">
                 WE HOPE YOU FIND WHAT YOU ARE LOOKING FOR. EXPLORE FAQ'S.
               </p>
             </Reveal>
           </div>
 
           {/* Right Column: FAQ Accordion */}
-          <div className="lg:col-span-8 flex flex-col gap-4">
+          <div className="lg:col-span-8 flex flex-col gap-2">
             {faqs.map((faq, index) => {
               const isOpen = openIndex === index;
               const num = (index + 1).toString().padStart(2, '0');
               return (
                 <Reveal key={index} delay={index * 0.05} direction="up">
                   <div
-                    className={`border-b border-warm/10 pb-4 transition-colors ${isOpen ? 'border-charge/30' : ''}`}
+                    className={`border-b border-warm/10 pb-2 transition-colors ${isOpen ? 'border-charge/30' : ''}`}
                   >
                     <button
                       onClick={() => toggleFaq(index)}
-                      className="w-full flex items-center justify-between text-left py-4 group"
+                      className="w-full flex items-center justify-between text-left py-3 group"
                     >
-                      <span className={`text-base lg:text-lg font-bold uppercase tracking-wide pr-8 flex items-center gap-4 ${isOpen ? 'text-charge' : 'text-warm group-hover:text-charge transition-colors'}`}>
+                      <span className={`text-sm lg:text-base font-bold uppercase tracking-wide pr-8 flex items-center gap-4 ${isOpen ? 'text-charge' : 'text-warm group-hover:text-charge transition-colors'}`}>
                         <span className="text-xs text-warm/40 font-mono">{num}</span>
                         {faq.q}
                       </span>
@@ -82,7 +82,7 @@ export function FaqSection() {
 
         {/* Stats Row */}
         <Reveal delay={0.2}>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 border-t border-warm/10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-warm/10">
             {stats.map((stat, idx) => (
               <div key={idx} className="flex items-center space-x-4">
                 <div className="w-8 h-8 flex-shrink-0 text-charge">

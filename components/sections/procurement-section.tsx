@@ -12,35 +12,35 @@ export function ProcurementSection() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <section id="procurement" className="grid-paper border-b border-warm/10 bg-forge">
-      <div className="container-shell py-16 lg:py-24">
-        <div className="grid gap-10 lg:grid-cols-[0.38fr_0.62fr]">
-          <aside className="space-y-6">
+    <section id="procurement" className="grid-paper border-b border-warm/10 bg-forge lg:flex lg:h-[100dvh] lg:items-center lg:overflow-hidden">
+      <div className="container-shell py-16 lg:py-8">
+        <div className="grid gap-8 lg:grid-cols-[0.36fr_0.64fr]">
+          <aside className="space-y-4">
             <div>
               <p className="label-kicker text-charge">Quote Intake</p>
               <h2 className="mt-4 text-3xl font-black uppercase leading-[1.05] text-warm md:text-4xl">
                 Hardware configurator for commercial EV charging projects.
               </h2>
-              <p className="mt-5 text-sm leading-7 text-warm/70">
+              <p className="mt-4 text-sm leading-6 text-warm/70">
                 Submit your site and product requirements. You&apos;ll receive your engineered spec sheet within 24 business hours.
               </p>
             </div>
 
-            <div className="border border-charge/25 bg-charge/10 p-5">
+            <div className="border border-charge/25 bg-charge/10 p-4">
               <div className="flex gap-3">
                 <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-charge" />
                 <div>
                   <p className="text-sm font-black uppercase tracking-[0.14em] text-warm">What happens next</p>
-                  <p className="mt-2 text-sm leading-6 text-warm/70">
+                  <p className="mt-2 text-sm leading-5 text-warm/70">
                     ENKO reviews your power band, region, quantity, and business role, then shares a recommended charger mix and procurement response.
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="border border-warm/10 bg-steel/60 p-5">
+            <div className="border border-warm/10 bg-steel/60 p-4">
               <p className="label-kicker text-charge">Direct Contact</p>
-              <ul className="mt-5 space-y-4 text-sm text-warm/70">
+              <ul className="mt-4 space-y-3 text-sm text-warm/70">
                 <li className="flex gap-3">
                   <Phone className="h-4 w-4 text-charge" />
                   +91 98765 43210
@@ -56,39 +56,39 @@ export function ProcurementSection() {
               </ul>
             </div>
 
-            <div className="border border-warm/10 bg-forge p-5">
+            <div className="border border-warm/10 bg-forge p-4">
               <p className="text-[10px] font-black uppercase tracking-[0.16em] text-warm/45">Operational regions</p>
-              <p className="mt-3 text-sm leading-6 text-warm/70">
+              <p className="mt-3 text-sm leading-5 text-warm/70">
                 Tamil Nadu, Kerala, Andhra Pradesh, and Karnataka are active service regions. Telangana and other states are handled as expansion enquiries.
               </p>
             </div>
           </aside>
 
           <form
-            className="border border-warm/15 bg-steel p-6 shadow-soft md:p-10"
+            className="border border-warm/15 bg-steel p-5 shadow-soft md:p-6"
             onSubmit={(event) => {
               event.preventDefault();
               setSubmitted(true);
             }}
           >
-            <div className="mb-10">
-              <h3 className="border-b border-warm/10 pb-4 text-xl font-black uppercase text-charge">Contact details</h3>
-              <div className="mt-6 grid gap-6 md:grid-cols-2">
+            <div className="mb-5">
+              <h3 className="border-b border-warm/10 pb-3 text-lg font-black uppercase text-charge">Contact details</h3>
+              <div className="mt-4 grid gap-4 md:grid-cols-2">
                 {['Full Name', 'Corporate Email Address', 'Contact Phone Number', 'Company Entity Name'].map((field) => (
                   <label key={field} className="block">
                     <span className="label-kicker text-warm/50">{field}</span>
-                    <input className="mt-2 h-12 w-full border border-warm/20 bg-forge/30 px-3 text-sm text-warm outline-none transition-colors focus:border-charge" required />
+                    <input className="mt-2 h-10 w-full border border-warm/20 bg-forge/30 px-3 text-sm text-warm outline-none transition-colors focus:border-charge" required />
                   </label>
                 ))}
               </div>
             </div>
 
-            <div className="mb-10">
-              <h3 className="border-b border-warm/10 pb-4 text-xl font-black uppercase text-charge">Deployment profile</h3>
-              <div className="mt-6 grid gap-6 md:grid-cols-2">
+            <div className="mb-5">
+              <h3 className="border-b border-warm/10 pb-3 text-lg font-black uppercase text-charge">Deployment profile</h3>
+              <div className="mt-4 grid gap-4 md:grid-cols-2">
                 <label className="block">
                   <span className="label-kicker text-warm/50">Primary Business Role</span>
-                  <select className="mt-2 h-12 w-full border border-warm/20 bg-forge/30 px-3 text-sm text-warm outline-none transition-colors focus:border-charge">
+                  <select className="mt-2 h-10 w-full border border-warm/20 bg-forge/30 px-3 text-sm text-warm outline-none transition-colors focus:border-charge">
                     {businessRoles.map((role) => (
                       <option key={role}>{role}</option>
                     ))}
@@ -96,7 +96,7 @@ export function ProcurementSection() {
                 </label>
                 <label className="block">
                   <span className="label-kicker text-warm/50">Target Region of Deployment</span>
-                  <select className="mt-2 h-12 w-full border border-warm/20 bg-forge/30 px-3 text-sm text-warm outline-none transition-colors focus:border-charge">
+                  <select className="mt-2 h-10 w-full border border-warm/20 bg-forge/30 px-3 text-sm text-warm outline-none transition-colors focus:border-charge">
                     {regions.map((region) => (
                       <option key={region}>{region}</option>
                     ))}
@@ -105,22 +105,22 @@ export function ProcurementSection() {
               </div>
             </div>
 
-            <div className="mb-10">
-              <h3 className="border-b border-warm/10 pb-4 text-xl font-black uppercase text-charge">Hardware requirement</h3>
-              <div className="mt-6">
+            <div className="mb-5">
+              <h3 className="border-b border-warm/10 pb-3 text-lg font-black uppercase text-charge">Hardware requirement</h3>
+              <div className="mt-4">
                 <span className="label-kicker text-warm/50">Selected Product Series</span>
                 <div className="mt-3 grid gap-3 md:grid-cols-3">
                   {series.map((item) => (
-                    <label key={item} className="flex cursor-pointer items-center gap-3 border border-warm/20 bg-forge/30 p-3 text-sm font-bold text-warm transition-colors hover:bg-forge">
+                    <label key={item} className="flex cursor-pointer items-center gap-3 border border-warm/20 bg-forge/30 p-3 text-xs font-bold text-warm transition-colors hover:bg-forge">
                       <input type="checkbox" className="h-4 w-4 accent-charge" />
                       {item}
                     </label>
                   ))}
                 </div>
               </div>
-              <label className="mt-6 block max-w-sm">
+              <label className="mt-4 block max-w-sm">
                 <span className="label-kicker text-warm/50">Estimated Unit Quantity</span>
-                <input className="mt-2 h-12 w-full border border-warm/20 bg-forge/30 px-3 text-sm text-warm outline-none transition-colors focus:border-charge" type="number" min="1" />
+                <input className="mt-2 h-10 w-full border border-warm/20 bg-forge/30 px-3 text-sm text-warm outline-none transition-colors focus:border-charge" type="number" min="1" />
               </label>
             </div>
 

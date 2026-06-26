@@ -2,7 +2,7 @@ import { ArrowRight, FileText, Zap } from 'lucide-react';
 
 export function PartnerHeroSection() {
   return (
-    <section className="relative w-full overflow-hidden border-b border-warm/10 bg-forge min-h-[100dvh] flex items-center justify-center text-center">
+    <section className="relative w-full overflow-hidden border-b border-warm/10 bg-forge min-h-[100dvh] flex items-center justify-center text-center lg:h-[100dvh]">
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute inset-0 bg-forge"></div>
@@ -12,22 +12,22 @@ export function PartnerHeroSection() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[70vw] bg-charge/8 rounded-full blur-[160px] pointer-events-none"></div>
       </div>
 
-      <div className="container-shell relative z-10 flex flex-col items-center max-w-5xl py-32">
+      <div className="container-shell relative z-10 flex flex-col items-center max-w-5xl py-20 lg:py-10">
 
 
         {/* Heading */}
-        <h3 className="text-3xl md:text-4xl lg:text-5xl font-black uppercase leading-[0.95] text-warm mb-8">
+        <h3 className="text-3xl md:text-4xl lg:text-5xl font-black uppercase leading-[0.95] text-warm mb-6">
           EV Charging <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-charge to-charge/60">Infrastructure</span> Partnerships
         </h3>
 
         {/* Sub Paragraph */}
-        <p className="max-w-2xl text-xl font-bold uppercase leading-snug text-warm/80 mb-6">
+        <p className="max-w-2xl text-lg font-bold uppercase leading-snug text-warm/80 mb-5 lg:text-xl">
           Charging Hardware &amp; Support for CPOs, OEMs, &amp; Fleets
         </p>
 
         {/* Paragraph */}
-        <p className="max-w-2xl text-base leading-relaxed text-warm/60 sm:text-lg mb-12">
+        <p className="max-w-2xl text-base leading-relaxed text-warm/60 sm:text-lg mb-9">
           Purpose-built DC and AC chargers. Domestic assembly. Built for commercial scale. Partner with ENKO to deploy, operate, and scale EV charging infrastructure designed for Indian conditions.
         </p>
 

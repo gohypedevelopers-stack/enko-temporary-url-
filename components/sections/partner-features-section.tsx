@@ -35,8 +35,8 @@ const features = [
 
 export function PartnerFeaturesSection() {
   return (
-    <section id="partner-options" className="scroll-mt-24 border-b border-warm/10 bg-steel">
-      <div className="container-shell py-16 lg:py-24">
+    <section id="partner-options" className="scroll-mt-24 border-b border-warm/10 bg-steel lg:flex lg:h-[100dvh] lg:items-center lg:overflow-hidden">
+      <div className="container-shell py-16 lg:py-10">
         <div className="max-w-3xl">
           <p className="label-kicker text-charge">Partner programs</p>
           <h2 className="mt-4 text-3xl font-black uppercase leading-[1.05] text-warm sm:text-4xl lg:text-5xl">
@@ -44,11 +44,11 @@ export function PartnerFeaturesSection() {
           </h2>
         </div>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+        <div className="mt-8 grid gap-5 lg:grid-cols-3 xl:gap-6">
           {features.map((feature) => {
             const Icon = feature.icon;
             return (
-              <article key={feature.title} className="flex min-h-[520px] flex-col border border-warm/10 bg-forge p-6 transition-colors hover:border-charge/55">
+              <article key={feature.title} className="flex min-h-[430px] flex-col border border-warm/10 bg-forge p-5 transition-colors hover:border-charge/55 xl:min-h-[460px] xl:p-6">
                 <div className="flex items-center justify-between">
                   <div className="flex h-12 w-12 items-center justify-center border border-charge/30 bg-charge/10 text-charge">
                     <Icon className="h-5 w-5" />
@@ -59,9 +59,9 @@ export function PartnerFeaturesSection() {
                   </div>
                 </div>
 
-                <h3 className="mt-8 text-2xl font-black uppercase text-warm">{feature.title}</h3>
+                <h3 className="mt-6 text-2xl font-black uppercase text-warm">{feature.title}</h3>
 
-                <div className="mt-7 space-y-5 text-sm leading-6">
+                <div className="mt-5 space-y-4 text-sm leading-6">
                   <div>
                     <p className="text-[10px] font-black uppercase tracking-[0.16em] text-warm/40">Pain point</p>
                     <p className="mt-1 text-warm/70">{feature.pain}</p>

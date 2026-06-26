@@ -88,7 +88,7 @@ export function TestimonialSlider({ reviews, className }: TestimonialSliderProps
   return (
     <div
       className={cn(
-        "relative w-full h-full overflow-hidden bg-transparent text-warm p-5 sm:p-8 lg:p-12",
+        "relative w-full h-full overflow-hidden bg-transparent text-warm p-5 sm:p-8 lg:px-12 lg:py-8",
         className
       )}
     >
@@ -126,7 +126,7 @@ export function TestimonialSlider({ reviews, className }: TestimonialSliderProps
           </div>
         </div>
 
-        <div className="relative order-1 min-h-[360px] overflow-hidden lg:order-2 lg:col-span-4 lg:min-h-[540px] flex items-center justify-center">
+        <div className="relative order-1 min-h-[320px] overflow-hidden lg:order-2 lg:col-span-4 lg:min-h-[500px] flex items-center justify-center">
           <AnimatePresence initial={false} custom={direction}>
             <motion.img
               key={currentIndex}
@@ -144,7 +144,7 @@ export function TestimonialSlider({ reviews, className }: TestimonialSliderProps
         </div>
 
         <div className="order-3 flex flex-col justify-between lg:col-span-5 lg:pl-8">
-          <div className="relative min-h-[260px] overflow-hidden pt-2 lg:pt-20">
+          <div className="relative min-h-[240px] overflow-hidden pt-2 lg:pt-14">
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
                 key={currentIndex}

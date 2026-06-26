@@ -251,7 +251,7 @@ export default function ProductsPage() {
 
 
       {/* Product Showcase Section */}
-      <section className="h-[100dvh] flex flex-col relative overflow-hidden border-b border-warm/10" style={{ background: 'radial-gradient(ellipse at 50% 40%, #2e2e2e 0%, #191919 55%, #0a0a0a 100%)' }}>
+      <section className="h-[100dvh] flex flex-col relative overflow-hidden border-b border-warm/10 pt-20 pb-3 lg:pt-24 lg:pb-5" style={{ background: 'radial-gradient(ellipse at 50% 40%, #2e2e2e 0%, #191919 55%, #0a0a0a 100%)' }}>
 
         <div className="container-shell h-full relative z-10 flex flex-col">
           <TestimonialSlider
