@@ -71,15 +71,15 @@ export function BlogSection() {
 
         {/* Header */}
         <Reveal>
-          <div className="mb-12 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between text-left border-b-2 border-warm/10 pb-4">
-            <div className="mx-auto lg:mx-0">
+          <div className="mb-12 flex flex-row items-center justify-between text-left border-b-2 border-warm/10 pb-4">
+            <div>
               <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-charge mb-2">[ ARCHITECTURE OVERVIEW ]</p>
               <h2 className="text-3xl md:text-5xl font-black uppercase text-warm leading-tight">
                 THE ENKO RANGE
               </h2>
             </div>
-            <div className="mx-auto lg:mx-0 mb-2 lg:mb-0">
-              <a href="/products" className="inline-block bg-charge text-forge px-8 py-3.5 font-bold uppercase tracking-widest text-[10px] rounded-sm hover:bg-warm transition-colors shadow-lg shadow-charge/20 group">
+            <div className="shrink-0">
+              <a href="/products" className="inline-block bg-charge text-forge px-6 py-3 font-bold uppercase tracking-widest text-[10px] rounded-sm hover:bg-warm transition-colors shadow-lg shadow-charge/20 group whitespace-nowrap">
                 Show All Products <span className="inline-block ml-1 group-hover:translate-x-1 transition-transform">&rarr;</span>
               </a>
             </div>

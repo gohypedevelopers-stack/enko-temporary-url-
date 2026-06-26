@@ -9,6 +9,7 @@ import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 import { publicStats } from '@/lib/site-data';
 import { Check, CheckCheck, Play, Star, CheckCircle2, ShieldCheck, Globe, Target, Eye, History, Zap, BatteryCharging, ArrowRight } from 'lucide-react';
+import { Reveal } from '@/components/reveal';
 
 type CardBlock = { title: string; body: string; accent: boolean };
 type Card = { tag: string; heading: string; blocks: CardBlock[] };
@@ -99,25 +100,31 @@ export default function AboutPage() {
       <SiteHeader />
 
       {/* Hero Section */}
-      <section className="relative min-h-[100dvh] flex items-center pt-24 overflow-hidden border-b border-warm/10">
+      <section className="relative h-[100dvh] flex flex-col items-center justify-center overflow-hidden border-b border-warm/10">
         <div className="absolute inset-0 pointer-events-none z-0">
-          <div className="absolute inset-0 bg-forge"></div>
-          {/* subtle grid */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:48px_48px]"></div>
-          {/* glowing blob */}
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: "url('https://i.postimg.cc/hjpkPZwd/Chat-GPT-Image-Jun-26-2026-04-01-07-PM.png')",
+            }}
+          ></div>
+          <div className="absolute inset-0 bg-forge/45"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-forge/85 via-forge/15 to-forge/35"></div>
           <div className="absolute right-0 bottom-0 w-[60vw] h-[60vw] bg-charge/10 rounded-full blur-[150px] translate-x-1/4 translate-y-1/4"></div>
         </div>
 
-        <div className="container-shell relative z-10 w-full">
-          <div className="max-w-4xl">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-warm mb-6 leading-[0.9]">
-              Powering the <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-charge to-charge/60">Transition</span>
-            </h1>
-            <p className="text-warm/60 text-lg md:text-xl max-w-2xl leading-relaxed">
-              We are ENKO, architects of the next-generation EV charging infrastructure. Designed for durability, built for the future.
-            </p>
-          </div>
+        <div className="px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center space-y-6 w-full max-w-4xl mx-auto relative z-10">
+          <Reveal>
+            <div className="flex flex-col items-center text-center w-full space-y-4">
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-warm leading-[0.9]">
+                Powering the <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-charge to-charge/60">Transition</span>
+              </h1>
+              <p className="text-warm/60 text-lg md:text-xl max-w-2xl leading-relaxed">
+                We are ENKO, architects of the next-generation EV charging infrastructure. Designed for durability, built for the future.
+              </p>
+            </div>
+          </Reveal>
         </div>
       </section>
 

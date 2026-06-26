@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 
 export function PartnersPageHero() {
   return (
-    <section className="relative min-h-[100dvh] flex flex-col justify-center overflow-hidden border-b border-warm/10 bg-forge lg:h-[100dvh]">
+    <section className="relative min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden border-b border-warm/10 bg-forge lg:h-[100dvh]">
       <Image
         src="/partners/hero_bg.png"
         alt="ENKO partnership infrastructure"
@@ -14,8 +14,8 @@ export function PartnersPageHero() {
       <div className="absolute inset-0 bg-gradient-to-r from-forge/95 via-forge/62 to-forge/10" />
       <div className="absolute inset-0 bg-gradient-to-t from-forge/75 via-transparent to-forge/15" />
 
-      <div className="container-shell relative z-10 flex min-h-[100dvh] items-center pt-24 pb-16">
-        <div className="max-w-3xl">
+      <div className="px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center space-y-6 w-full max-w-4xl mx-auto relative z-10">
+        <div className="max-w-3xl mx-auto flex flex-col items-center">
           <p className="text-[10px] font-black uppercase tracking-[0.24em] text-charge">
             Partner Network
           </p>
@@ -25,7 +25,7 @@ export function PartnersPageHero() {
           <p className="mt-6 max-w-2xl text-base leading-7 text-warm/75 sm:text-lg">
             Build, operate, and scale commercial EV charging networks with hardware, field support, and deployment programs designed for Indian infrastructure.
           </p>
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
               href="#procurement"
               className="industrial-button border-charge bg-charge text-forge hover:bg-warm hover:text-forge"

@@ -11,6 +11,7 @@ import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 import { FaqSection } from '@/components/sections/faq-section';
 import { ProcurementSection } from '@/components/sections/procurement-section';
+import { Reveal } from '@/components/reveal';
 
 export default function PartnersPage() {
   return (
@@ -18,12 +19,12 @@ export default function PartnersPage() {
       <SiteHeader />
       
       {/* Partner Page Sections */}
-      <PartnersPageHero />
-      <PartnerHeroSection />
-      <PartnerFeaturesSection />
+      <Reveal><PartnersPageHero /></Reveal>
+      <Reveal><PartnerHeroSection /></Reveal>
+      <Reveal><PartnerFeaturesSection /></Reveal>
       
-      <FastChargingSolutionsSection />
-      <WhyPartnerSection />
+      <Reveal><FastChargingSolutionsSection /></Reveal>
+      <Reveal><WhyPartnerSection /></Reveal>
 
       {/* Forms & FAQ */}
       <FaqSection />

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { CheckCircle2, Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
 import { whatsappUrl } from '@/lib/site-data';
+import { Reveal } from '@/components/reveal';
 
 const businessRoles = ['Charge Point Operator (CPO)', 'Vehicle OEM', 'Fleet Logistics Provider', 'Institutional Real Estate Buyer'];
 const regions = ['Tamil Nadu', 'Kerala', 'Andhra Pradesh', 'Karnataka (Operational HQ)', 'Telangana (Expansion)', 'Other Expansion State'];
@@ -14,6 +15,7 @@ export function ProcurementSection() {
   return (
     <section id="procurement" className="grid-paper border-b border-warm/10 bg-forge lg:flex lg:h-[100dvh] lg:items-center lg:overflow-hidden">
       <div className="container-shell py-16 lg:py-8">
+        <Reveal>
         <div className="grid gap-8 lg:grid-cols-[0.36fr_0.64fr]">
           <aside className="space-y-4">
             <div>
@@ -146,6 +148,7 @@ export function ProcurementSection() {
             </div>
           </form>
         </div>
+        </Reveal>
       </div>
     </section>
   );

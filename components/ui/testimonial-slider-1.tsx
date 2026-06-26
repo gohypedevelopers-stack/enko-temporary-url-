@@ -15,6 +15,15 @@ type Review = {
   quote: string;
   imageSrc: string;
   thumbnailSrc: string;
+  specs?: {
+    category: string;
+    items: { label: string; value: string }[];
+  }[];
+  features?: {
+    icon: any;
+    title: string;
+    subtitle: string;
+  }[];
 };
 
 interface TestimonialSliderProps {
@@ -93,7 +102,7 @@ export function TestimonialSlider({ reviews, className }: TestimonialSliderProps
       )}
     >
       <div className="grid h-full grid-cols-1 gap-8 lg:grid-cols-12">
-        <div className="order-2 flex flex-col justify-between lg:order-1 lg:col-span-3">
+        <div className="order-2 flex flex-col justify-between lg:order-1 lg:col-span-2">
           <div className="flex items-start justify-between gap-4 lg:block lg:space-y-8">
             <span className="font-mono text-sm font-bold text-warm/45">
               {String(currentIndex + 1).padStart(2, "0")} / {String(reviews.length).padStart(2, "0")}
@@ -138,12 +147,12 @@ export function TestimonialSlider({ reviews, className }: TestimonialSliderProps
               animate="center"
               exit="exit"
               transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-              className="absolute inset-0 h-full w-full object-contain px-8 pb-16 pt-8 drop-shadow-[0_0_36px_rgba(232,160,32,0.18)] lg:pb-20"
+              className="absolute inset-0 h-full w-full object-contain p-2 pb-8 drop-shadow-[0_0_36px_rgba(232,160,32,0.18)] lg:p-4"
             />
           </AnimatePresence>
         </div>
 
-        <div className="order-3 flex flex-col justify-between lg:col-span-5 lg:pl-8">
+        <div className="order-3 flex flex-col justify-between lg:col-span-6 lg:pl-4 xl:pl-8">
           <div className="relative min-h-[240px] overflow-hidden pt-2 lg:pt-14">
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
@@ -154,6 +163,7 @@ export function TestimonialSlider({ reviews, className }: TestimonialSliderProps
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+                className="pr-2"
               >
                 <p className="text-[10px] font-black uppercase tracking-[0.24em] text-charge">
                   {activeReview.affiliation}
@@ -164,6 +174,49 @@ export function TestimonialSlider({ reviews, className }: TestimonialSliderProps
                 <blockquote className="mt-7 border-l-2 border-charge pl-5 text-base leading-7 text-warm/75 sm:text-lg">
                   {activeReview.quote}
                 </blockquote>
+                
+                {activeReview.specs && activeReview.specs.length > 0 && (
+                  <div className="mt-8">
+                    <div className="space-y-6">
+                      {activeReview.specs.map((specGroup, idx) => (
+                        <div key={idx}>
+                          <h4 className="text-xs font-bold uppercase tracking-widest text-charge mb-3">
+                            {specGroup.category}
+                          </h4>
+                          <ul className="space-y-2">
+                            {specGroup.items.map((item, itemIdx) => (
+                              <li key={itemIdx} className="flex text-sm">
+                                <span className="w-1/2 text-warm/60 font-medium pr-4">{item.label}</span>
+                                <span className="w-1/2 text-warm/90">{item.value}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {activeReview.features && activeReview.features.length > 0 && (
+                  <div className="mt-6 flex flex-wrap sm:flex-nowrap items-center gap-4 xl:gap-6 border-t border-warm/10 pt-6 w-full">
+                    {activeReview.features.map((feature, idx) => (
+                      <React.Fragment key={idx}>
+                        <div className="flex items-center gap-3">
+                          <div className="text-warm/80">
+                            {feature.icon}
+                          </div>
+                          <div>
+                            <div className="text-sm font-black uppercase text-charge leading-none">{feature.title}</div>
+                            <div className="text-xs font-medium uppercase text-warm/70 mt-1 leading-none">{feature.subtitle}</div>
+                          </div>
+                        </div>
+                        {idx < activeReview.features!.length - 1 && (
+                          <div className="hidden sm:block h-8 w-px bg-warm/10 flex-shrink-0"></div>
+                        )}
+                      </React.Fragment>
+                    ))}
+                  </div>
+                )}
               </motion.div>
             </AnimatePresence>
           </div>
