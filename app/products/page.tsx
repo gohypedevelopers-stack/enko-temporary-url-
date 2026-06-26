@@ -507,7 +507,7 @@ export default function ProductsPage() {
       </section>
 
       {/* Product Catalog Section */}
-      <section className="min-h-[100dvh] bg-steel border-b border-warm/10 py-16 lg:flex lg:h-[100dvh] lg:items-center lg:overflow-hidden lg:py-10">
+      <section id="ac-chargers" className="min-h-[100dvh] scroll-mt-24 bg-steel border-b border-warm/10 py-16 lg:flex lg:h-[100dvh] lg:items-center lg:overflow-hidden lg:py-10">
         <div className="container-shell">
           <Reveal>
 
@@ -644,7 +644,7 @@ export default function ProductsPage() {
                 },
                 {
                   step: "03",
-                  title: "Deploy & Integrate",
+                  title: "Deploy & Integrate",  
                   desc: "Our expert teams handle the physical installation, grid integration, and site commissioning.",
                   icon: "/images/service_safe.png"
                 },

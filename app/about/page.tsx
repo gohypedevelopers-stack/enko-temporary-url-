@@ -272,7 +272,7 @@ export default function AboutPage() {
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-6xl mx-auto relative z-10">
           {/* AC Card */}
-          <Link href="/products" className="group relative bg-steel border border-warm/10 rounded-3xl p-10 lg:p-14 overflow-hidden flex flex-col h-full hover:border-charge/40 transition-all duration-500 hover:shadow-2xl hover:shadow-charge/5">
+          <Link href="/products#ac-chargers" className="group relative bg-steel border border-warm/10 rounded-3xl p-10 lg:p-14 overflow-hidden flex flex-col h-full hover:border-charge/40 transition-all duration-500 hover:shadow-2xl hover:shadow-charge/5">
             {/* Massive Background Icon */}
             <div className="absolute -bottom-10 -right-10 text-warm/5 group-hover:text-charge/5 transition-colors duration-500 transform group-hover:scale-110 group-hover:-rotate-12">
               <Zap className="w-64 h-64" strokeWidth={1} />
@@ -296,7 +296,7 @@ export default function AboutPage() {
           </Link>
 
           {/* DC Card */}
-          <Link href="/products" className="group relative bg-steel border border-warm/10 rounded-3xl p-10 lg:p-14 overflow-hidden flex flex-col h-full hover:border-charge/40 transition-all duration-500 hover:shadow-2xl hover:shadow-charge/5">
+          <Link href="/products#dc-chargers" className="group relative bg-steel border border-warm/10 rounded-3xl p-10 lg:p-14 overflow-hidden flex flex-col h-full hover:border-charge/40 transition-all duration-500 hover:shadow-2xl hover:shadow-charge/5">
             {/* Massive Background Icon */}
             <div className="absolute -bottom-10 -right-10 text-warm/5 group-hover:text-charge/5 transition-colors duration-500 transform group-hover:scale-110 group-hover:rotate-12">
               <BatteryCharging className="w-64 h-64" strokeWidth={1} />
