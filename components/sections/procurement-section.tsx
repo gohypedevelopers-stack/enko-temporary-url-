@@ -1,9 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { CheckCircle2, Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
+import { CheckCircle2, Mail, MapPin, MessageCircle, Phone, Loader2 } from 'lucide-react';
 import { whatsappUrl } from '@/lib/site-data';
 import { Reveal } from '@/components/reveal';
+import { submitContactForm } from '@/lib/wordpress';
 
 const businessRoles = ['Charge Point Operator (CPO)', 'Vehicle OEM', 'Fleet Logistics Provider', 'Institutional Real Estate Buyer'];
 const regions = ['Tamil Nadu', 'Kerala', 'Andhra Pradesh', 'Karnataka (Operational HQ)', 'Telangana (Expansion)', 'Other Expansion State'];
@@ -11,6 +12,7 @@ const series = ['FLOW AC Series', 'STORM DC Series', 'BLAZE ULTRA Series'];
 
 export function ProcurementSection() {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   return (
     <section id="procurement" className="grid-paper border-b border-warm/10 bg-forge lg:flex lg:h-[100dvh] lg:items-center lg:overflow-hidden">
@@ -68,8 +70,22 @@ export function ProcurementSection() {
 
           <form
             className="border border-warm/15 bg-steel p-5 shadow-soft md:p-6"
-            onSubmit={(event) => {
+            onSubmit={async (event) => {
               event.preventDefault();
+              setIsSubmitting(true);
+              const formData = new FormData(event.currentTarget);
+              const data = {
+                fullName: formData.get('FullName'),
+                email: formData.get('CorporateEmailAddress'),
+                phone: formData.get('ContactPhoneNumber'),
+                company: formData.get('CompanyEntityName'),
+                role: formData.get('PrimaryBusinessRole'),
+                region: formData.get('TargetRegion'),
+                series: formData.getAll('ProductSeries').join(', '),
+                quantity: formData.get('EstimatedUnitQuantity'),
+              };
+              await submitContactForm(data);
+              setIsSubmitting(false);
               setSubmitted(true);
             }}
           >
@@ -79,7 +95,7 @@ export function ProcurementSection() {
                 {['Full Name', 'Corporate Email Address', 'Contact Phone Number', 'Company Entity Name'].map((field) => (
                   <label key={field} className="block">
                     <span className="label-kicker text-warm/50">{field}</span>
-                    <input className="mt-2 h-10 w-full border border-warm/20 bg-forge/30 px-3 text-sm text-warm outline-none transition-colors focus:border-charge" required />
+                    <input name={field.replace(/\s+/g, '')} className="mt-2 h-10 w-full border border-warm/20 bg-forge/30 px-3 text-sm text-warm outline-none transition-colors focus:border-charge" required />
                   </label>
                 ))}
               </div>
@@ -90,7 +106,7 @@ export function ProcurementSection() {
               <div className="mt-4 grid gap-4 md:grid-cols-2">
                 <label className="block">
                   <span className="label-kicker text-warm/50">Primary Business Role</span>
-                  <select className="mt-2 h-10 w-full border border-warm/20 bg-forge/30 px-3 text-sm text-warm outline-none transition-colors focus:border-charge">
+                  <select name="PrimaryBusinessRole" className="mt-2 h-10 w-full border border-warm/20 bg-forge/30 px-3 text-sm text-warm outline-none transition-colors focus:border-charge">
                     {businessRoles.map((role) => (
                       <option key={role}>{role}</option>
                     ))}
@@ -98,7 +114,7 @@ export function ProcurementSection() {
                 </label>
                 <label className="block">
                   <span className="label-kicker text-warm/50">Target Region of Deployment</span>
-                  <select className="mt-2 h-10 w-full border border-warm/20 bg-forge/30 px-3 text-sm text-warm outline-none transition-colors focus:border-charge">
+                  <select name="TargetRegion" className="mt-2 h-10 w-full border border-warm/20 bg-forge/30 px-3 text-sm text-warm outline-none transition-colors focus:border-charge">
                     {regions.map((region) => (
                       <option key={region}>{region}</option>
                     ))}
@@ -114,7 +130,7 @@ export function ProcurementSection() {
                 <div className="mt-3 grid gap-3 md:grid-cols-3">
                   {series.map((item) => (
                     <label key={item} className="flex cursor-pointer items-center gap-3 border border-warm/20 bg-forge/30 p-3 text-xs font-bold text-warm transition-colors hover:bg-forge">
-                      <input type="checkbox" className="h-4 w-4 accent-charge" />
+                      <input type="checkbox" name="ProductSeries" value={item} className="h-4 w-4 accent-charge" />
                       {item}
                     </label>
                   ))}
@@ -122,7 +138,7 @@ export function ProcurementSection() {
               </div>
               <label className="mt-4 block max-w-sm">
                 <span className="label-kicker text-warm/50">Estimated Unit Quantity</span>
-                <input className="mt-2 h-10 w-full border border-warm/20 bg-forge/30 px-3 text-sm text-warm outline-none transition-colors focus:border-charge" type="number" min="1" />
+                <input name="EstimatedUnitQuantity" className="mt-2 h-10 w-full border border-warm/20 bg-forge/30 px-3 text-sm text-warm outline-none transition-colors focus:border-charge" type="number" min="1" />
               </label>
             </div>
 
@@ -134,8 +150,8 @@ export function ProcurementSection() {
 
             <div className="border-t border-warm/10 pt-4">
               <div className="flex flex-col gap-4 sm:flex-row">
-              <button className="industrial-button w-full bg-warm text-forge transition-colors hover:bg-white sm:w-auto" type="submit">
-                Submit Specification
+              <button disabled={isSubmitting} className="industrial-button w-full bg-warm text-forge transition-colors hover:bg-white sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2" type="submit">
+                {isSubmitting ? <><Loader2 className="w-4 h-4 animate-spin" /> Submitting...</> : 'Submit Specification'}
               </button>
                 <a className="industrial-button w-full bg-charge text-forge transition-colors hover:bg-[#d89117] sm:w-auto" href={whatsappUrl}>
                   <MessageCircle className="mr-2 h-4 w-4" />

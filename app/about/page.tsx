@@ -10,6 +10,7 @@ import { SiteHeader } from '@/components/site-header';
 import { publicStats } from '@/lib/site-data';
 import { Check, CheckCheck, Play, Star, CheckCircle2, ShieldCheck, Globe, Target, Eye, History, Zap, BatteryCharging, ArrowRight } from 'lucide-react';
 import { Reveal } from '@/components/reveal';
+import { NewsletterForm } from '@/components/newsletter-form';
 
 type CardBlock = { title: string; body: string; accent: boolean };
 type Card = { tag: string; heading: string; blocks: CardBlock[] };
@@ -438,16 +439,7 @@ export default function AboutPage() {
               Ready to start your project with ENKO? Get in touch with us to discuss your ideas, ask questions. From concepts, completion, let's explore quality and make it a reality.
             </p>
           </div>
-          <div className="flex w-full max-w-md lg:ml-auto">
-            <input
-              type="email"
-              placeholder="Enter your Email"
-              className="bg-forge text-warm px-6 py-3 rounded-l-full w-full outline-none focus:ring-2 ring-charge text-sm font-bold placeholder:text-warm/40 border border-warm/10 border-r-0"
-            />
-            <button className="bg-charge text-forge px-6 py-3 rounded-r-full font-black uppercase tracking-widest text-sm hover:bg-warm transition-colors border border-charge">
-              Subscribe
-            </button>
-          </div>
+          <NewsletterForm />
         </div>
 
         {/* Footer info is already in SiteFooter, but we can leave this here since the image has a specific top-footer section */}
