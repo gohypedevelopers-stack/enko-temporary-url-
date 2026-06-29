@@ -6,7 +6,7 @@ export const navItems = [
   { label: 'CONTACT', href: '/contact' },
 ];
 
-export const whatsappUrl = 'https://wa.me/919876543210?text=Hello%20ENKO%2C%20I%20want%20to%20discuss%20EV%20charging%20hardware%20for%20my%20deployment.';
+export const whatsappUrl = 'https://wa.me/919894126003?text=Hello%20ENKO%2C%20I%20want%20to%20discuss%20EV%20charging%20hardware%20for%20my%20deployment.';
 
 export const publicStats = [
   { label: 'Charging Stations', value: '100+' },
