@@ -47,7 +47,7 @@ export function ProcurementSection() {
               <ul className="mt-4 space-y-3 text-sm text-warm/70">
                 <li className="flex gap-3">
                   <Phone className="h-4 w-4 text-charge" />
-                  +91 98765 43210
+                  +91 98941 26003
                 </li>
                 <li className="flex gap-3">
                   <Mail className="h-4 w-4 text-charge" />
@@ -153,7 +153,7 @@ export function ProcurementSection() {
               <button disabled={isSubmitting} className="industrial-button w-full bg-warm text-forge transition-colors hover:bg-white sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2" type="submit">
                 {isSubmitting ? <><Loader2 className="w-4 h-4 animate-spin" /> Submitting...</> : 'Submit Specification'}
               </button>
-                <a className="industrial-button w-full bg-charge text-forge transition-colors hover:bg-[#d89117] sm:w-auto" href={whatsappUrl}>
+                <a className="industrial-button w-full bg-charge text-forge transition-colors hover:bg-[#d89117] sm:w-auto" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="mr-2 h-4 w-4" />
                   WhatsApp ENKO
                 </a>

@@ -42,7 +42,7 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-3 text-sm text-warm/55">
             <li>
               <span className="block text-[10px] uppercase text-warm/40 mb-0.5">Phone</span>
-              +91 98765 43210
+              +91 98941 26003
             </li>
             <li>
               <span className="block text-[10px] uppercase text-warm/40 mb-0.5">Email</span>
