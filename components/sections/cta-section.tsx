@@ -17,12 +17,18 @@ export function CtaSection() {
         
         <Reveal direction="right" delay={0.15}>
           <div className="flex flex-col gap-3 w-full sm:w-auto min-w-[280px]">
-            <button className="w-full px-8 py-4 bg-[#111] text-white text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white hover:text-[#111] transition-colors border-2 border-[#111]">
+            <a
+              href="/contact#procurement"
+              className="w-full px-8 py-4 bg-[#111] text-center text-white text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white hover:text-[#111] transition-colors border-2 border-[#111]"
+            >
               REQUEST PRICING SPEC
-            </button>
-            <button className="w-full px-8 py-4 bg-transparent border-2 border-[#111] text-[#111] text-[10px] font-black uppercase tracking-[0.2em] hover:bg-[#111] hover:text-white transition-colors">
+            </a>
+            {/* <a
+              href="/contact"
+              className="w-full px-8 py-4 bg-transparent border-2 border-[#111] text-center text-[#111] text-[10px] font-black uppercase tracking-[0.2em] hover:bg-[#111] hover:text-white transition-colors"
+            >
               CONTACT SALES TEAM
-            </button>
+            </a> */}
           </div>
         </Reveal>
       </div>
